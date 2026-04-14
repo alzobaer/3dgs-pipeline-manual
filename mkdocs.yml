@@ -1,0 +1,165 @@
+site_name: 3DGS Pipeline Manual - Zobaer Al
+site_description: Complete 3D Gaussian Splatting Pipeline for Time-Series Plant Phenotyping
+site_author: Zobaer Al, Mineno Laboratory, Shizuoka University
+site_url: https://your-username.github.io/3dgs-pipeline-manual/
+
+# Repository
+repo_name: 3dgs-pipeline-manual
+repo_url: https://github.com/your-username/3dgs-pipeline-manual
+edit_uri: edit/main/docs/
+
+# Theme
+theme:
+  name: material
+  language: en
+  
+  palette:
+    # Light mode
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+  
+  icon:
+    repo: fontawesome/brands/github
+
+# Navigation
+nav:
+  - Home: index.md
+  
+  - Getting Started:
+    - Overview: getting-started/overview.md
+    - System Requirements: getting-started/requirements.md
+    - Quick Start: getting-started/quickstart.md
+  
+  - Environment Setup:
+    - Introduction: environment/intro.md
+    - CUDA Installation: environment/cuda.md
+    - Python Environment: environment/python.md
+    - COLMAP Installation: environment/colmap.md
+    - 3DGS Installation: environment/3dgs.md
+    - Verification: environment/verify.md
+  
+  - Data Preparation:
+    - Video Requirements: data-prep/video-requirements.md
+    - Frame Extraction: data-prep/frame-extraction.md
+    - Directory Structure: data-prep/directory-structure.md
+    - File Naming: data-prep/file-naming.md
+  
+  - Pipeline Execution:
+    - Overview: pipeline/overview.md
+    - Stage 1 - Video Processing: pipeline/video-processing.md
+    - Stage 2 - COLMAP SfM: pipeline/colmap-sfm.md
+    - Stage 3 - 3DGS Training: pipeline/3dgs-training.md
+    - Stage 4 - Rendering: pipeline/rendering.md
+    - Stage 5 - Trait Extraction: pipeline/trait-extraction.md
+  
+  - Parameters:
+    - Video Parameters: parameters/video.md
+    - COLMAP Parameters: parameters/colmap.md
+    - 3DGS Parameters: parameters/3dgs.md
+    - Recommended Settings: parameters/recommended.md
+  
+  - Troubleshooting:
+    - Common Issues: troubleshooting/common-issues.md
+    - COLMAP Errors: troubleshooting/colmap-errors.md
+    - 3DGS Errors: troubleshooting/3dgs-errors.md
+    - GPU/Memory Issues: troubleshooting/gpu-memory.md
+  
+  - My Research:
+    - Overview: my-research/overview.md
+    - Original Contributions: my-research/contributions.md
+    - Results & Validation: my-research/results.md
+    - Publications: my-research/publications.md
+  
+  - About:
+    - Changelog: about/changelog.md
+    - License: about/license.md
+
+# Markdown Extensions
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+      toc_depth: 3
+  
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Plugins
+plugins:
+  - search:
+      lang: en
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+
+# Extra
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/your-username
+    - icon: fontawesome/solid/envelope
+      link: mailto:your.email@example.com
+  
+  analytics:
+    provider: google
+    property: G-XXXXXXXXXX
+
+# Copyright
+copyright: Copyright &copy; 2026 Zobaer Al, Mineno Laboratory, Shizuoka University
