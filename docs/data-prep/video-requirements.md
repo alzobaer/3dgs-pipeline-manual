@@ -132,7 +132,7 @@ Our validated dataset used in this research:
 | Video duration | ~60 seconds each |
 | Plant species | Tomato (*Solanum lycopersicum*) |
 | Growth stage | Seedling → mature plant |
-| Capture location | Mineno Lab Greenhouse, Shizuoka University |
+| Capture location | [Happy Quality greenhouse](https://share.google/alrmfOUOLqGngzcbS), Fukuroi city, Shizuoka |
 
 ---
 
