@@ -154,13 +154,9 @@ plugins:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/your-username
+      link: https://github.com/alzobaer
     - icon: fontawesome/solid/envelope
-      link: mailto:your.email@example.com
-  
-  analytics:
-    provider: google
-    property: G-XXXXXXXXXX
+      link: mailto:al.zobaer@yahoo.com
 
 # Copyright
-copyright: Copyright &copy; 2026 Zobaer Al, Mineno Laboratory, Shizuoka University
+copyright: Copyright &copy; 2026 Al Zobaer, Mineno Laboratory, Shizuoka University
