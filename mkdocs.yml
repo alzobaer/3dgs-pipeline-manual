@@ -1,11 +1,11 @@
 site_name: 3DGS Pipeline Manual - Zobaer Al
 site_description: Complete 3D Gaussian Splatting Pipeline for Time-Series Plant Phenotyping
-site_author: Zobaer Al, Mineno Laboratory, Shizuoka University
-site_url: https://your-username.github.io/3dgs-pipeline-manual/
+site_author: Al Zobaer, Mineno Laboratory, Shizuoka University
+site_url: https://alzobaer.github.io/3dgs-pipeline-manual/
 
 # Repository
 repo_name: 3dgs-pipeline-manual
-repo_url: https://github.com/your-username/3dgs-pipeline-manual
+repo_url: https://github.com/alzobaer/3dgs-pipeline-manual
 edit_uri: edit/main/docs/
 
 # Theme
@@ -54,7 +54,7 @@ nav:
   - Getting Started:
     - Overview: getting-started/overview.md
     - System Requirements: getting-started/requirements.md
-    - Quick Start: getting-started/quickstart.md
+    - Quick Start: getting-started/quick-start.md
   
   - Environment Setup:
     - Introduction: environment/intro.md
@@ -66,8 +66,9 @@ nav:
   
   - Data Preparation:
     - Video Requirements: data-prep/video-requirements.md
-    - Frame Extraction: data-prep/frame-extraction.md
+    - Frame Extraction: data-prep/frame-extraction.md  
     - Directory Structure: data-prep/directory-structure.md
+    - Dataset Details: data-prep/dataset.md  # ← YOUR COMPLETE DATASET DOC
     - File Naming: data-prep/file-naming.md
   
   - Pipeline Execution:

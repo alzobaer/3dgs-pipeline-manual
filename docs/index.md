@@ -32,7 +32,7 @@ This manual provides complete step-by-step instructions for reproducing the 3DGS
 
     Get running in 30 minutes
 
-    [:octicons-arrow-right-24: Start now](getting-started/quickstart.md)
+    [:octicons-arrow-right-24: Start now](getting-started/quick-start.md)
 
 -   :material-cog:{ .lg .middle } **Environment Setup**
 
@@ -130,7 +130,7 @@ This pipeline achieves:
 ### For Beginners
 - **[Getting Started](getting-started/overview.md)** - Introduction and basic concepts
 - **[Environment Setup](environment/intro.md)** - Complete installation guide
-- **[Quick Start](getting-started/quickstart.md)** - Get running in 30 minutes
+- **[Quick Start](getting-started/quick-start.md)** - Get running in 30 minutes
 
 ### For Active Users
 - **[Pipeline Execution](pipeline/overview.md)** - Complete workflow guide
