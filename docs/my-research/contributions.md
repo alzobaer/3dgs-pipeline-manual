@@ -32,14 +32,9 @@ graph TD
 
 ### Implementation Video
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
-  <iframe 
-    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-    src="https://www.youtube.com/embed/YOUR_DEMO_VIDEO_ID" 
-    frameborder="0" 
-    allowfullscreen>
-  </iframe>
-</div>
+<video controls width="100%" style="border-radius:8px; margin-bottom:1rem;">
+  <source src="../../assets/videos/demos/training-progress.mp4" type="video/mp4">
+</video>
 
 *Video 1: Demonstration of scale-invariant height extraction method*
 
@@ -115,14 +110,9 @@ I integrated IoT sensors measuring:
 
 ### Time-lapse Video
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe 
-    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-    src="https://www.youtube.com/embed/YOUR_TIMELAPSE_VIDEO" 
-    frameborder="0" 
-    allowfullscreen>
-  </iframe>
-</div>
+<video controls width="100%" style="border-radius:8px; margin-bottom:1rem;">
+  <source src="../../assets/videos/results/timelapse-growth.mp4" type="video/mp4">
+</video>
 
 *Video 2: 50 days of tomato growth captured with my 3DGS pipeline (Jan 19 - Mar 9, 2026)*
 

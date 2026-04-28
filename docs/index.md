@@ -84,14 +84,9 @@ graph LR
 
 ### Complete Pipeline Walkthrough
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe 
-    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-    src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
-    frameborder="0" 
-    allowfullscreen>
-  </iframe>
-</div>
+<video controls width="100%" style="border-radius:8px; margin-bottom:1rem;">
+  <source src="assets/videos/tutorials/pipeline-overview.mp4" type="video/mp4">
+</video>
 
 *Video 1: Complete pipeline execution from video to trait extraction*
 

@@ -41,7 +41,7 @@ If using this manual or methodology:
   title = {3D Gaussian Splatting Pipeline Manual},
   year = {2026},
   publisher = {Mineno Laboratory, Shizuoka University},
-  url = {https://your-username.github.io/3dgs-pipeline-manual/}
+  url = {https://alzobaer.github.io/3dgs-pipeline-manual/}
 }
 ```
 
