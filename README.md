@@ -1,129 +1,123 @@
 # 3DGS Pipeline Manual
 
-Complete reproducibility manual for 3D Gaussian Splatting pipeline for plant phenotyping.
+**Complete reproducibility manual for 3D Gaussian Splatting time-series plant phenotyping**
 
-## Quick Start
+[![Deploy MkDocs](https://github.com/alzobaer/3dgs-pipeline-manual/actions/workflows/deploy.yml/badge.svg)](https://github.com/alzobaer/3dgs-pipeline-manual/actions/workflows/deploy.yml)
+[![MkDocs Material](https://img.shields.io/badge/docs-MkDocs%20Material-blue)](https://squidfunk.github.io/mkdocs-material/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+📖 **Live site:** https://alzobaer.github.io/3dgs-pipeline-manual/
+
+---
+
+## Overview
+
+This manual documents the full pipeline for reconstructing plant growth in 3D using **3D Gaussian Splatting (3DGS)**, validated over a 50-day time series (22 capture dates, Jan 19 – Mar 9, 2026) at Mineno Laboratory, Shizuoka University.
+
+| Metric | Result |
+|--------|--------|
+| PSNR | 23.80 dB |
+| SSIM | 0.779 |
+| LPIPS | 0.216 |
+| Temporal CV | 3.5% (excellent) |
+| Success rate | 22 / 22 dates (100%) |
+
+---
+
+## Pipeline Stages
+
+```
+Video Capture → Frame Extraction → COLMAP SfM → 3DGS Training → Rendering → Trait Extraction
+```
+
+1. **Video Acquisition** — fixed-viewpoint video per date
+2. **Frame Extraction** — FFmpeg, 2 fps, ~330 frames/date
+3. **COLMAP** — Structure-from-Motion sparse reconstruction
+4. **3DGS Training** — 30,000 iterations, RTX 6000 Ada, ~20 min/date
+5. **Rendering** — novel-view synthesis at consistent viewpoint
+6. **Trait Extraction** — height, canopy area, growth curve from rendered images
+
+---
+
+## Local Preview
 
 ```bash
-# Install MkDocs
-pip install mkdocs mkdocs-material
+# Install dependencies
+pip install -r requirements.txt
 
-# Preview locally
+# Serve locally
 mkdocs serve
-# Open: http://127.0.0.1:8000
-
-# Build static site
-mkdocs build
-
-# Deploy to GitHub Pages
-mkdocs gh-deploy
+# → open http://127.0.0.1:8000
 ```
 
-## Adding Your Media
+---
 
-### Images
+## Deployment
 
-1. Place images in appropriate folders:
-   - `docs/assets/images/figures/` - Your research figures
-   - `docs/assets/images/photos/` - Greenhouse photos
-   - `docs/assets/images/diagrams/` - Pipeline diagrams
-   - `docs/assets/images/screenshots/` - Software screenshots
+Deployment to GitHub Pages is **automatic** on every push to `main` via GitHub Actions.
 
-2. Reference in markdown:
-```markdown
-![Description](assets/images/figures/your-image.png)
-*Caption text*
-```
-
-### Videos
-
-**Small videos (<50MB):**
-```markdown
-<video width="100%" controls>
-  <source src="assets/videos/demos/your-video.mp4" type="video/mp4">
-</video>
-```
-
-**Large videos (YouTube):**
-```markdown
-<iframe width="100%" height="400" 
-        src="https://www.youtube.com/embed/VIDEO_ID" 
-        frameborder="0" allowfullscreen>
-</iframe>
-```
-
-### Your Research Figures
-
-Copy your 5 figures to:
-- `psnr_over_time_v2.png` → `docs/assets/images/figures/`
-- `psnr_by_radiation_v2.png` → `docs/assets/images/figures/`
-- `environmental_correlations_v2.png` → `docs/assets/images/figures/`
-- `ply_vs_rendered_comparison_v2.png` → `docs/assets/images/figures/`
-- `growth_curve_v2.png` → `docs/assets/images/figures/`
-
-## Deployment Options
-
-### Option 1: GitHub Pages (Recommended)
+To deploy manually:
 
 ```bash
-# 1. Create GitHub repository
-# 2. Push your code
-git init
-git add .
-git commit -m "Initial commit"
-git remote add origin https://github.com/YOUR_USERNAME/3dgs-pipeline-manual
-git push -u origin main
-
-# 3. Deploy
 mkdocs gh-deploy
-
-# Live at: https://YOUR_USERNAME.github.io/3dgs-pipeline-manual/
 ```
 
-### Option 2: Read the Docs
+---
 
-1. Push to GitHub
-2. Go to readthedocs.org
-3. Import repository
-4. Configure: Use MkDocs
-5. Build automatically
-
-### Option 3: Netlify
-
-1. Build site: `mkdocs build`
-2. Drag `site/` folder to netlify.com
-3. Done!
-
-## Structure
+## Repository Structure
 
 ```
 3dgs-pipeline-manual/
 ├── docs/
-│   ├── index.md (Homepage)
-│   ├── getting-started/
-│   ├── environment/
-│   ├── pipeline/
-│   ├── my-research/ (Your original work)
+│   ├── index.md                  # Homepage
+│   ├── getting-started/          # Overview, hardware, software setup
+│   ├── environment/              # Conda, CUDA, dependencies
+│   ├── pipeline/                 # Stages 1–6 (detailed)
+│   ├── my-research/              # Validation results & figures
+│   ├── advanced/                 # Batch processing, parameters
+│   ├── troubleshooting/          # GPU memory, COLMAP issues
 │   └── assets/
 │       ├── images/
-│       │   ├── figures/ (Your 5 figures)
-│       │   ├── photos/
-│       │   ├── diagrams/
-│       │   └── screenshots/
-│       ├── videos/
-│       │   ├── demos/
-│       │   └── tutorials/
-│       └── pdfs/
-├── mkdocs.yml (Configuration)
-└── README.md (This file)
+│       │   ├── figures/          # Research figures (PSNR, growth curve…)
+│       │   ├── screenshots/      # Step-by-step software screenshots
+│       │   └── diagrams/         # Pipeline diagrams
+│       └── videos/
+│           ├── demos/            # Training progress, 360° orbit
+│           ├── results/          # GT vs render, time-lapse growth
+│           └── tutorials/        # Pipeline overview
+├── .github/workflows/deploy.yml  # Auto-deploy to GitHub Pages
+├── mkdocs.yml                    # Site configuration
+├── requirements.txt              # Python dependencies
+└── README.md
 ```
+
+---
+
+## Citation
+
+If you use this pipeline or manual in your research, please cite:
+
+```bibtex
+@misc{zobaer2026_3dgs_plant,
+  author    = {Al Zobaer},
+  title     = {3D Gaussian Splatting Pipeline for Time-Series Plant Phenotyping},
+  year      = {2026},
+  publisher = {GitHub},
+  url       = {https://alzobaer.github.io/3dgs-pipeline-manual/}
+}
+```
+
+---
 
 ## Author
 
-**Zobaer Al** (M2)  
-Mineno Laboratory  
-Shizuoka University
+**Al Zobaer** (M2 Student)  
+Mineno Laboratory, Graduate School of Integrated Science and Technology  
+Shizuoka University, Japan
+
+---
 
 ## License
 
-For research and educational purposes.
+This documentation is released under the [MIT License](LICENSE).  
+The 3DGS training code is subject to the original [gaussian-splatting license](https://github.com/graphdeco-inria/gaussian-splatting/blob/main/LICENSE.md).
