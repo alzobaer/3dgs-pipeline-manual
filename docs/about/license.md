@@ -50,6 +50,6 @@ If using this manual or methodology:
 **Zobaer Al**  
 Mineno Laboratory  
 Shizuoka University  
-Email: zobaer.al.24@shizuoka.ac.jp
+Email: al.zobaer.24@shizuoka.ac.jp
 
 For questions, issues, or permissions.

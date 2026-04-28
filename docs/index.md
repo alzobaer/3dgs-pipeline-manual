@@ -177,7 +177,7 @@ This pipeline achieves:
     **Still stuck?**
     
     Contact: Mineno Laboratory, Shizuoka University  
-    Email: zobaer.al.23@shizuoka.ac.jp
+    Email: al.zobaer.24@shizuoka.ac.jp
 
 ---
 
