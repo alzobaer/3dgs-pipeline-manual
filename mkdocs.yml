@@ -30,7 +30,6 @@ theme:
         name: Switch to light mode
   
   features:
-    - navigation.instant
     - navigation.tracking
     - navigation.tabs
     - navigation.tabs.sticky
@@ -145,10 +144,74 @@ markdown_extensions:
 # Plugins
 plugins:
   - search:
-      lang: en
+      lang:
+        - en
+        - ja
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: true
+      languages:
+        - locale: en
+          default: true
+          name: English
+          build: true
+        - locale: ja
+          name: 日本語
+          build: true
+          site_name: 3DGS パイプライン マニュアル - Zobaer Al
+          site_description: 時系列植物フェノタイピングのための3DGSパイプライン完全マニュアル
+          nav_translations:
+            Home: ホーム
+            Getting Started: はじめに
+            Overview: 概要
+            System Requirements: システム要件
+            Quick Start: クイックスタート
+            Environment Setup: 環境構築
+            Introduction: はじめに
+            CUDA Installation: CUDAインストール
+            Python Environment: Python環境
+            COLMAP Installation: COLMAPインストール
+            3DGS Installation: 3DGSインストール
+            Verification: 動作確認
+            Data Preparation: データ準備
+            Video Requirements: 動画要件
+            Frame Extraction: フレーム抽出
+            Directory Structure: ディレクトリ構造
+            Dataset Details: データセット詳細
+            File Naming: ファイル命名規則
+            Pipeline Execution: パイプライン実行
+            Stage 1 - Video Processing: Stage 1 - 動画処理
+            Stage 2 - COLMAP SfM: Stage 2 - COLMAP SfM
+            Stage 3 - 3DGS Training: Stage 3 - 3DGS学習
+            Stage 4 - Rendering: Stage 4 - レンダリング
+            Stage 5 - Trait Extraction: Stage 5 - 形質抽出
+            Parameters: パラメータ
+            Video Parameters: 動画パラメータ
+            COLMAP Parameters: COLMAPパラメータ
+            3DGS Parameters: 3DGSパラメータ
+            Recommended Settings: 推奨設定
+            Troubleshooting: トラブルシューティング
+            Common Issues: よくある問題
+            COLMAP Errors: COLMAPエラー
+            3DGS Errors: 3DGSエラー
+            GPU/Memory Issues: GPU/メモリ問題
+            My Research: 研究内容
+            Original Contributions: 独自の貢献
+            Results & Validation: 結果・検証
+            Publications: 発表論文
+            About: このサイトについて
+            Changelog: 変更履歴
+            License: ライセンス
 
 # Extra
 extra:
+  alternate:
+    - name: English
+      link: /3dgs-pipeline-manual/
+      lang: en
+    - name: 日本語
+      link: /3dgs-pipeline-manual/ja/
+      lang: ja
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/alzobaer
