@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#python-environment-setup" class="md-skip">
+        <a href="#python" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -836,10 +836,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install-miniconda" class="md-nav__link">
+  <a href="#miniconda" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install Miniconda
+        Minicondaのインストール
       
     </span>
   </a>
@@ -847,10 +847,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-environment" class="md-nav__link">
+  <a href="#conda" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Create Environment
+        conda環境の作成
       
     </span>
   </a>
@@ -858,10 +858,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#install-pytorch" class="md-nav__link">
+  <a href="#pytorch" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install PyTorch
+        PyTorchのインストール
       
     </span>
   </a>
@@ -869,10 +869,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#verify" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Verify
+        動作確認
       
     </span>
   </a>
@@ -2072,10 +2072,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install-miniconda" class="md-nav__link">
+  <a href="#miniconda" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install Miniconda
+        Minicondaのインストール
       
     </span>
   </a>
@@ -2083,10 +2083,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-environment" class="md-nav__link">
+  <a href="#conda" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Create Environment
+        conda環境の作成
       
     </span>
   </a>
@@ -2094,10 +2094,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#install-pytorch" class="md-nav__link">
+  <a href="#pytorch" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install PyTorch
+        PyTorchのインストール
       
     </span>
   </a>
@@ -2105,10 +2105,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#verify" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Verify
+        動作確認
       
     </span>
   </a>
@@ -2135,25 +2135,29 @@
   
 
 
-<h1 id="python-environment-setup">Python Environment Setup<a class="headerlink" href="#python-environment-setup" title="Permanent link">&para;</a></h1>
-<p>Set up Python and Conda for the pipeline.</p>
-<h2 id="install-miniconda">Install Miniconda<a class="headerlink" href="#install-miniconda" title="Permanent link">&para;</a></h2>
+<h1 id="python">Python環境の構築<a class="headerlink" href="#python" title="Permanent link">&para;</a></h1>
+<p>パイプライン用のPythonおよびConda環境をセットアップします。</p>
+<hr />
+<h2 id="miniconda">Minicondaのインストール<a class="headerlink" href="#miniconda" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>wget<span class="w"> </span>https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>bash<span class="w"> </span>Miniconda3-latest-Linux-x86_64.sh<span class="w"> </span>-b
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>~/miniconda3/bin/conda<span class="w"> </span>init<span class="w"> </span>bash
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </span></code></pre></div>
-<h2 id="create-environment">Create Environment<a class="headerlink" href="#create-environment" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="conda">conda環境の作成<a class="headerlink" href="#conda" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>3dgs<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10<span class="w"> </span>-y
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>conda<span class="w"> </span>activate<span class="w"> </span>3dgs
 </span></code></pre></div>
-<h2 id="install-pytorch">Install PyTorch<a class="headerlink" href="#install-pytorch" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="pytorch">PyTorchのインストール<a class="headerlink" href="#pytorch" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pip<span class="w"> </span>install<span class="w"> </span>torch<span class="w"> </span>torchvision<span class="w"> </span>--index-url<span class="w"> </span>https://download.pytorch.org/whl/cu124
 </span></code></pre></div>
-<h2 id="verify">Verify<a class="headerlink" href="#verify" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="_1">動作確認<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import torch; print(f&#39;PyTorch: {torch.__version__}&#39;); print(f&#39;CUDA: {torch.cuda.is_available()}&#39;)&quot;</span>
 </span></code></pre></div>
-<p>Next: <a href="../colmap/">COLMAP Installation</a></p>
+<p>次：<a href="../colmap/">COLMAPのインストール</a></p>
 
 
 

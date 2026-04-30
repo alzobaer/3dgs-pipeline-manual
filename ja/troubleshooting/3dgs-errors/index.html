@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#3dgs-errors" class="md-skip">
+        <a href="#3dgs" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -1668,10 +1668,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#filenotfounderror-sparse0imagesbin" class="md-nav__link">
+  <a href="#filenotfounderrorsparse0imagesbin" class="md-nav__link">
     <span class="md-ellipsis">
       
-        FileNotFoundError: sparse/0/images.bin
+        FileNotFoundError：sparse/0/images.bin
       
     </span>
   </a>
@@ -1679,10 +1679,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cuda-out-of-memory" class="md-nav__link">
+  <a href="#cuda" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CUDA Out of Memory
+        CUDA メモリ不足
       
     </span>
   </a>
@@ -1690,10 +1690,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cstdint-compile-error" class="md-nav__link">
+  <a href="#cstdint" class="md-nav__link">
     <span class="md-ellipsis">
       
-        cstdint Compile Error
+        cstdint コンパイルエラー
       
     </span>
   </a>
@@ -2061,10 +2061,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#filenotfounderror-sparse0imagesbin" class="md-nav__link">
+  <a href="#filenotfounderrorsparse0imagesbin" class="md-nav__link">
     <span class="md-ellipsis">
       
-        FileNotFoundError: sparse/0/images.bin
+        FileNotFoundError：sparse/0/images.bin
       
     </span>
   </a>
@@ -2072,10 +2072,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cuda-out-of-memory" class="md-nav__link">
+  <a href="#cuda" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CUDA Out of Memory
+        CUDA メモリ不足
       
     </span>
   </a>
@@ -2083,10 +2083,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cstdint-compile-error" class="md-nav__link">
+  <a href="#cstdint" class="md-nav__link">
     <span class="md-ellipsis">
       
-        cstdint Compile Error
+        cstdint コンパイルエラー
       
     </span>
   </a>
@@ -2113,37 +2113,40 @@
   
 
 
-<h1 id="3dgs-errors">3DGS Errors<a class="headerlink" href="#3dgs-errors" title="Permanent link">&para;</a></h1>
-<p>3D Gaussian Splatting troubleshooting.</p>
-<h2 id="filenotfounderror-sparse0imagesbin">FileNotFoundError: sparse/0/images.bin<a class="headerlink" href="#filenotfounderror-sparse0imagesbin" title="Permanent link">&para;</a></h2>
-<p><strong>Cause:</strong> COLMAP output not in expected location</p>
-<p><strong>Solution:</strong>
+<h1 id="3dgs">3DGSエラー<a class="headerlink" href="#3dgs" title="Permanent link">&para;</a></h1>
+<p>3D Gaussian Splatting のトラブルシューティング。</p>
+<hr />
+<h2 id="filenotfounderrorsparse0imagesbin">FileNotFoundError：sparse/0/images.bin<a class="headerlink" href="#filenotfounderrorsparse0imagesbin" title="Permanent link">&para;</a></h2>
+<p><strong>原因：</strong> COLMAP出力が期待される場所にない</p>
+<p><strong>解決策：</strong>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>sparse/0
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>cp<span class="w"> </span>sparse/*.bin<span class="w"> </span>sparse/0/
 </span></code></pre></div></p>
-<h2 id="cuda-out-of-memory">CUDA Out of Memory<a class="headerlink" href="#cuda-out-of-memory" title="Permanent link">&para;</a></h2>
-<p><strong>Solutions:</strong></p>
+<hr />
+<h2 id="cuda">CUDA メモリ不足<a class="headerlink" href="#cuda" title="Permanent link">&para;</a></h2>
+<p><strong>解決策：</strong></p>
 <ol>
 <li>
-<p>Reduce frames:
+<p>フレーム数を減らす：
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ffmpeg<span class="w"> </span>-i<span class="w"> </span>video.mp4<span class="w"> </span>-vf<span class="w"> </span><span class="s2">&quot;fps=3&quot;</span><span class="w"> </span>...
 </span></code></pre></div></p>
 </li>
 <li>
-<p>Downscale:
+<p>解像度を下げる：
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ffmpeg<span class="w"> </span>-i<span class="w"> </span>video.mp4<span class="w"> </span>-vf<span class="w"> </span><span class="s2">&quot;fps=5,scale=1920:1080&quot;</span><span class="w"> </span>...
 </span></code></pre></div></p>
 </li>
 <li>
-<p>Set memory config:
+<p>メモリ設定を行う：
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTORCH_CUDA_ALLOC_CONF</span><span class="o">=</span>expandable_segments:True
 </span></code></pre></div></p>
 </li>
 </ol>
-<h2 id="cstdint-compile-error">cstdint Compile Error<a class="headerlink" href="#cstdint-compile-error" title="Permanent link">&para;</a></h2>
-<p><strong>Cause:</strong> Missing header in rasterizer</p>
-<p><strong>Solution:</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Add to rasterizer_impl.h:</span>
+<hr />
+<h2 id="cstdint">cstdint コンパイルエラー<a class="headerlink" href="#cstdint" title="Permanent link">&para;</a></h2>
+<p><strong>原因：</strong> ラスタライザにヘッダが不足</p>
+<p><strong>解決策：</strong>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># rasterizer_impl.h の先頭に追加：</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1">#include &lt;cstdint&gt;</span>
 </span></code></pre></div></p>
 

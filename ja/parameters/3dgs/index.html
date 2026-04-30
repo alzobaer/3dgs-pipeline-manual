@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#3dgs-parameters" class="md-skip">
+        <a href="#3dgs" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -1495,10 +1495,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#key-parameters" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Key Parameters
+        主要パラメータ
       
     </span>
   </a>
@@ -1506,10 +1506,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#memory-configuration" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Memory Configuration
+        メモリ設定
       
     </span>
   </a>
@@ -2050,10 +2050,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#key-parameters" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Key Parameters
+        主要パラメータ
       
     </span>
   </a>
@@ -2061,10 +2061,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#memory-configuration" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Memory Configuration
+        メモリ設定
       
     </span>
   </a>
@@ -2091,16 +2091,18 @@
   
 
 
-<h1 id="3dgs-parameters">3DGS Parameters<a class="headerlink" href="#3dgs-parameters" title="Permanent link">&para;</a></h1>
-<p>Optimal training settings.</p>
-<h2 id="key-parameters">Key Parameters<a class="headerlink" href="#key-parameters" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>--iterations<span class="w"> </span><span class="m">30000</span><span class="w">  </span><span class="c1"># Full convergence</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>--resolution<span class="w"> </span>-1<span class="w">  </span><span class="c1"># Use full resolution (4K)</span>
+<h1 id="3dgs">3DGSパラメータ<a class="headerlink" href="#3dgs" title="Permanent link">&para;</a></h1>
+<p>最適な学習設定。</p>
+<hr />
+<h2 id="_1">主要パラメータ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>--iterations<span class="w"> </span><span class="m">30000</span><span class="w">  </span><span class="c1"># 完全な収束まで学習</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>--resolution<span class="w"> </span>-1<span class="w">     </span><span class="c1"># フル解像度（4K）を使用</span>
 </span></code></pre></div>
-<h2 id="memory-configuration">Memory Configuration<a class="headerlink" href="#memory-configuration" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="_2">メモリ設定<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTORCH_CUDA_ALLOC_CONF</span><span class="o">=</span>expandable_segments:True
 </span></code></pre></div>
-<p>Prevents OOM fragmentation.</p>
+<p>OOMによるメモリ断片化を防止します。</p>
 
 
 

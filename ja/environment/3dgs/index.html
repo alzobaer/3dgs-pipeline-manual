@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#3d-gaussian-splatting-installation" class="md-skip">
+        <a href="#3d-gaussian-splatting" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -892,10 +892,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#clone-repository" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Clone Repository
+        リポジトリのクローン
       
     </span>
   </a>
@@ -903,10 +903,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#activate-environment" class="md-nav__link">
+  <a href="#conda" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Activate Environment
+        conda環境の有効化
       
     </span>
   </a>
@@ -914,10 +914,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#install-dependencies" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install Dependencies
+        依存パッケージのインストール
       
     </span>
   </a>
@@ -925,10 +925,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#build-submodules" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Build Submodules
+        サブモジュールのビルド
       
     </span>
   </a>
@@ -936,10 +936,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#verify" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Verify
+        動作確認
       
     </span>
   </a>
@@ -2083,10 +2083,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#clone-repository" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Clone Repository
+        リポジトリのクローン
       
     </span>
   </a>
@@ -2094,10 +2094,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#activate-environment" class="md-nav__link">
+  <a href="#conda" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Activate Environment
+        conda環境の有効化
       
     </span>
   </a>
@@ -2105,10 +2105,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#install-dependencies" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install Dependencies
+        依存パッケージのインストール
       
     </span>
   </a>
@@ -2116,10 +2116,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#build-submodules" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Build Submodules
+        サブモジュールのビルド
       
     </span>
   </a>
@@ -2127,10 +2127,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#verify" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Verify
+        動作確認
       
     </span>
   </a>
@@ -2157,31 +2157,36 @@
   
 
 
-<h1 id="3d-gaussian-splatting-installation">3D Gaussian Splatting Installation<a class="headerlink" href="#3d-gaussian-splatting-installation" title="Permanent link">&para;</a></h1>
-<p>Install the 3DGS framework.</p>
-<h2 id="clone-repository">Clone Repository<a class="headerlink" href="#clone-repository" title="Permanent link">&para;</a></h2>
+<h1 id="3d-gaussian-splatting">3D Gaussian Splattingのインストール<a class="headerlink" href="#3d-gaussian-splatting" title="Permanent link">&para;</a></h1>
+<p>3DGSフレームワークをインストールします。</p>
+<hr />
+<h2 id="_1">リポジトリのクローン<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/graphdeco-inria/gaussian-splatting.git
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>gaussian-splatting
 </span></code></pre></div>
-<h2 id="activate-environment">Activate Environment<a class="headerlink" href="#activate-environment" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="conda">conda環境の有効化<a class="headerlink" href="#conda" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>conda<span class="w"> </span>activate<span class="w"> </span>3dgs
 </span></code></pre></div>
-<h2 id="install-dependencies">Install Dependencies<a class="headerlink" href="#install-dependencies" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="_2">依存パッケージのインストール<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt<span class="w"> </span>--no-build-isolation
 </span></code></pre></div>
-<h2 id="build-submodules">Build Submodules<a class="headerlink" href="#build-submodules" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Fix cstdint error first</span>
+<hr />
+<h2 id="_3">サブモジュールのビルド<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># cstdintエラーの修正</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>find<span class="w"> </span>submodules<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.h&quot;</span><span class="w"> </span>-o<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.cu&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>grep<span class="w"> </span>-l<span class="w"> </span><span class="s2">&quot;uint32_t\|int32_t&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span>xargs<span class="w"> </span>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;1i#include &lt;cstdint&gt;&#39;</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># Build</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># ビルド</span>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>pip<span class="w"> </span>install<span class="w"> </span>submodules/diff-gaussian-rasterization<span class="w"> </span>--no-build-isolation
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>pip<span class="w"> </span>install<span class="w"> </span>submodules/simple-knn<span class="w"> </span>--no-build-isolation
 </span></code></pre></div>
-<h2 id="verify">Verify<a class="headerlink" href="#verify" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="_4">動作確認<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python<span class="w"> </span>train.py<span class="w"> </span>--help
 </span></code></pre></div>
-<p>Next: <a href="../verify/">Verification</a></p>
+<p>次：<a href="../verify/">動作確認</a></p>
 
 
 

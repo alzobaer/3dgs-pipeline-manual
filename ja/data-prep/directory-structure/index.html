@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#directory-structure" class="md-skip">
+        <a href="#_1" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -1065,10 +1065,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#required-structure" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Required Structure
+        必要な構造
       
     </span>
   </a>
@@ -1076,10 +1076,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#full-multi-date-dataset" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Full Multi-Date Dataset
+        複数日付のデータセット全体
       
     </span>
   </a>
@@ -1087,10 +1087,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#setting-up-the-structure" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Setting Up the Structure
+        構造のセットアップ
       
     </span>
   </a>
@@ -1098,10 +1098,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#disk-space-by-stage" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Disk Space by Stage
+        各ステージ後のディスク使用量
       
     </span>
   </a>
@@ -1109,10 +1109,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#naming-convention-rules" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Naming Convention Rules
+        命名規則
       
     </span>
   </a>
@@ -1120,10 +1120,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-step" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Next Step
+        次のステップ
       
     </span>
   </a>
@@ -2094,10 +2094,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#required-structure" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Required Structure
+        必要な構造
       
     </span>
   </a>
@@ -2105,10 +2105,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#full-multi-date-dataset" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Full Multi-Date Dataset
+        複数日付のデータセット全体
       
     </span>
   </a>
@@ -2116,10 +2116,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#setting-up-the-structure" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Setting Up the Structure
+        構造のセットアップ
       
     </span>
   </a>
@@ -2127,10 +2127,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#disk-space-by-stage" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Disk Space by Stage
+        各ステージ後のディスク使用量
       
     </span>
   </a>
@@ -2138,10 +2138,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#naming-convention-rules" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Naming Convention Rules
+        命名規則
       
     </span>
   </a>
@@ -2149,10 +2149,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-step" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Next Step
+        次のステップ
       
     </span>
   </a>
@@ -2179,41 +2179,29 @@
   
 
 
-<h1 id="directory-structure">Directory Structure<a class="headerlink" href="#directory-structure" title="Permanent link">&para;</a></h1>
-<p>How to organize your data for the 3DGS pipeline.</p>
+<h1 id="_1">ディレクトリ構造<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>3DGSパイプライン用のデータ整理方法を説明します。</p>
 <hr />
-<h2 id="required-structure">Required Structure<a class="headerlink" href="#required-structure" title="Permanent link">&para;</a></h2>
-<p>Each capture date must follow this exact layout:</p>
+<h2 id="_2">必要な構造<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>data/
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>└── 20260119/                    ← date folder (YYYYMMDD format)
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    ├── video.mp4                ← raw input video
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    ├── frames/                  ← extracted JPEG frames (Stage 1 output)
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>└── 20260119/                    ← 日付フォルダ（YYYYMMDD形式）
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    ├── video.mp4                ← 入力動画
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    ├── frames/                  ← 抽出したJPEGフレーム（Stage 1出力）
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    │   ├── frame_0001.jpg
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    │   ├── frame_0002.jpg
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    │   └── ... (~329 files)
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    ├── database.db              ← COLMAP database (auto-created)
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    ├── sparse/                  ← COLMAP output (Stage 2 output)
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    │   └── 0/
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    │       ├── cameras.bin
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    │       ├── images.bin
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    │       └── points3D.bin
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    └── output/                  ← 3DGS model (Stage 3 output)
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>        ├── cameras.json
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        ├── cfg_args
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        ├── input.ply
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        └── point_cloud/
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>            └── iteration_30000/
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>                └── point_cloud.ply
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    │   └── ... （約329ファイル）
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    ├── database.db              ← COLMAPデータベース（自動生成）
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    ├── sparse/                  ← COLMAP出力（Stage 2出力）
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    │   └── 0/
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    │       ├── cameras.bin
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    │       ├── images.bin
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    │       └── points3D.bin
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    └── output/                  ← 3DGSモデル（Stage 3出力）
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        └── point_cloud/
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>            └── iteration_30000/
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>                └── point_cloud.ply
 </span></code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">📸 Screenshot to capture</p>
-<p>Screenshot your actual data directory open in a file browser — show the date folder containing all subfolders after completing the full pipeline.</p>
-</div>
-<p><img alt="File browser showing date folder with frames sparse and output subfolders all populated" src="../../../assets/images/screenshots/27-directory-structure.png" width="100%" />
-<em>A complete date folder after running all 5 pipeline stages — all subfolders populated</em></p>
 <hr />
-<h2 id="full-multi-date-dataset">Full Multi-Date Dataset<a class="headerlink" href="#full-multi-date-dataset" title="Permanent link">&para;</a></h2>
-<p>For a time-series study with multiple dates:</p>
+<h2 id="_3">複数日付のデータセット全体<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>data/
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>├── 20260101/
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>│   ├── video.mp4
@@ -2221,134 +2209,101 @@
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>│   ├── sparse/
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>│   └── output/
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>├── 20260108/
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│   ├── video.mp4
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>│   ├── frames/
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>│   ├── sparse/
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>│   └── output/
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>├── 20260115/
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>│   └── ...
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>└── 20260119/
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    └── ...
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>results/
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>├── traits_20260101.csv
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>├── traits_20260108.csv
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>├── traits_20260115.csv
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>├── traits_20260119.csv
-</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>└── all_traits.csv              ← combined time-series
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>│   └── ...
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>└── 20260119/
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    └── ...
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>results/
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>├── traits_20260101.csv
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>└── all_traits.csv
 </span></code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">📸 Screenshot to capture</p>
-<p>Screenshot the top-level <code>data/</code> directory showing all 22 date folders.</p>
-</div>
-<p><img alt="File browser showing data directory with 22 date folders named in YYYYMMDD format" src="../../../assets/images/screenshots/28-multidate-structure.png" width="100%" />
-<em>Top-level data directory with all 22 capture dates — each folder is a self-contained reconstruction</em></p>
 <hr />
-<h2 id="setting-up-the-structure">Setting Up the Structure<a class="headerlink" href="#setting-up-the-structure" title="Permanent link">&para;</a></h2>
-<p>Create the folder structure before running any pipeline stage:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Create date directory</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nv">DATE</span><span class="o">=</span><span class="s2">&quot;20260119&quot;</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>data/<span class="nv">$DATE</span>/frames
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>data/<span class="nv">$DATE</span>/sparse
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># Copy or move your video</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>cp<span class="w"> </span>/path/to/recording.mp4<span class="w"> </span>data/<span class="nv">$DATE</span>/video.mp4
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1"># Verify</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>ls<span class="w"> </span>data/<span class="nv">$DATE</span>/
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1"># frames/  video.mp4</span>
+<h2 id="_4">構造のセットアップ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">DATE</span><span class="o">=</span><span class="s2">&quot;20260119&quot;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>data/<span class="nv">$DATE</span>/frames
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>data/<span class="nv">$DATE</span>/sparse
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>cp<span class="w"> </span>/path/to/recording.mp4<span class="w"> </span>data/<span class="nv">$DATE</span>/video.mp4
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>ls<span class="w"> </span>data/<span class="nv">$DATE</span>/
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># frames/  video.mp4</span>
 </span></code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">📸 Screenshot to capture</p>
-<p>Screenshot the terminal showing <code>ls data/$DATE/</code> after setup — confirms video.mp4 and empty frames/ folder are ready.</p>
-</div>
-<p><img alt="Terminal showing ls output of date directory with video.mp4 and frames folder" src="../../../assets/images/screenshots/29-initial-setup.png" width="100%" />
-<em>Initial directory state before pipeline — just video.mp4 and empty frames/ folder needed to start</em></p>
 <hr />
-<h2 id="disk-space-by-stage">Disk Space by Stage<a class="headerlink" href="#disk-space-by-stage" title="Permanent link">&para;</a></h2>
+<h2 id="_5">各ステージ後のディスク使用量<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>After Stage</th>
-<th>New Files</th>
-<th>Cumulative Size</th>
+<th>ステージ後</th>
+<th>新規ファイル</th>
+<th>累積サイズ</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Setup</td>
+<td>準備</td>
 <td><code>video.mp4</code></td>
-<td>~2 GB</td>
+<td>約2 GB</td>
 </tr>
 <tr>
-<td>Stage 1 (frames)</td>
-<td><code>frames/*.jpg</code> (~329 files)</td>
-<td>~3.5 GB</td>
+<td>Stage 1（フレーム）</td>
+<td><code>frames/*.jpg</code></td>
+<td>約3.5 GB</td>
 </tr>
 <tr>
-<td>Stage 2 (COLMAP)</td>
+<td>Stage 2（COLMAP）</td>
 <td><code>database.db</code> + <code>sparse/</code></td>
-<td>~3.7 GB</td>
+<td>約3.7 GB</td>
 </tr>
 <tr>
-<td>Stage 3 (3DGS)</td>
+<td>Stage 3（3DGS）</td>
 <td><code>output/point_cloud/</code></td>
-<td>~4.0 GB</td>
+<td>約4.0 GB</td>
 </tr>
 <tr>
-<td>Stage 4 (renders)</td>
+<td>Stage 4（レンダリング）</td>
 <td><code>output/train/</code> + <code>output/test/</code></td>
-<td>~6.5 GB</td>
+<td>約6.5 GB</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Per date: ~6.5 GB</strong> · <strong>22 dates: ~143 GB</strong> · <strong>Recommended storage: 500 GB+</strong></p>
+<p><strong>1日付あたり約6.5 GB</strong> · <strong>22日分で約143 GB</strong> · <strong>推奨ストレージ：500 GB以上</strong></p>
 <hr />
-<h2 id="naming-convention-rules">Naming Convention Rules<a class="headerlink" href="#naming-convention-rules" title="Permanent link">&para;</a></h2>
+<h2 id="_6">命名規則<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Item</th>
-<th>Format</th>
-<th>Example</th>
-<th>Why</th>
+<th>項目</th>
+<th>形式</th>
+<th>例</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Date folders</td>
+<td>日付フォルダ</td>
 <td><code>YYYYMMDD</code></td>
 <td><code>20260119</code></td>
-<td>Sorts chronologically</td>
 </tr>
 <tr>
-<td>Video file</td>
+<td>動画ファイル</td>
 <td><code>video.mp4</code></td>
 <td><code>video.mp4</code></td>
-<td>Scripts expect this name</td>
 </tr>
 <tr>
-<td>Frames</td>
+<td>フレーム</td>
 <td><code>frame_%04d.jpg</code></td>
 <td><code>frame_0001.jpg</code></td>
-<td>COLMAP reads in this order</td>
 </tr>
 <tr>
-<td>Results</td>
+<td>結果</td>
 <td><code>traits_YYYYMMDD.csv</code></td>
 <td><code>traits_20260119.csv</code></td>
-<td>Matches date folders</td>
 </tr>
 </tbody>
 </table>
 <div class="admonition warning">
-<p class="admonition-title">Do not use spaces or special characters in paths</p>
-<p>COLMAP and 3DGS scripts may fail with paths containing spaces. Use underscores or hyphens only.</p>
+<p class="admonition-title">パスにスペースや特殊文字を使用しないでください</p>
 </div>
 <hr />
-<h2 id="next-step">Next Step<a class="headerlink" href="#next-step" title="Permanent link">&para;</a></h2>
-<p><a class="md-button" href="../dataset/">→ Dataset Details</a>
-<a class="md-button md-button--primary" href="../../pipeline/video-processing/">→ Start Pipeline: Video Processing</a></p>
+<h2 id="_7">次のステップ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p><a class="md-button md-button--primary" href="../../pipeline/video-processing/">→ パイプライン開始：動画処理</a></p>
 
 
 

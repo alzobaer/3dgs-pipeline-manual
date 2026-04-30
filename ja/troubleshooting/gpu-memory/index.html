@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#gpu-memory-issues" class="md-skip">
+        <a href="#gpu" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -1696,10 +1696,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#monitor-gpu-usage" class="md-nav__link">
+  <a href="#gpu_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Monitor GPU Usage
+        GPU使用量の監視
       
     </span>
   </a>
@@ -1707,22 +1707,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#out-of-memory-solutions" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Out of Memory Solutions
+        メモリ不足の解決策
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Out of Memory Solutions">
+    <nav class="md-nav" aria-label="メモリ不足の解決策">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#reduce-data-size" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Reduce Data Size
+        データサイズの削減
       
     </span>
   </a>
@@ -1730,10 +1730,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#optimize-memory" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Optimize Memory
+        メモリの最適化
       
     </span>
   </a>
@@ -1746,10 +1746,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#vram-requirements" class="md-nav__link">
+  <a href="#fpsvram" class="md-nav__link">
     <span class="md-ellipsis">
       
-        VRAM Requirements
+        解像度・FPS別VRAM要件
       
     </span>
   </a>
@@ -2089,10 +2089,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#monitor-gpu-usage" class="md-nav__link">
+  <a href="#gpu_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Monitor GPU Usage
+        GPU使用量の監視
       
     </span>
   </a>
@@ -2100,22 +2100,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#out-of-memory-solutions" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Out of Memory Solutions
+        メモリ不足の解決策
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Out of Memory Solutions">
+    <nav class="md-nav" aria-label="メモリ不足の解決策">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#reduce-data-size" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Reduce Data Size
+        データサイズの削減
       
     </span>
   </a>
@@ -2123,10 +2123,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#optimize-memory" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Optimize Memory
+        メモリの最適化
       
     </span>
   </a>
@@ -2139,10 +2139,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#vram-requirements" class="md-nav__link">
+  <a href="#fpsvram" class="md-nav__link">
     <span class="md-ellipsis">
       
-        VRAM Requirements
+        解像度・FPS別VRAM要件
       
     </span>
   </a>
@@ -2169,79 +2169,82 @@
   
 
 
-<h1 id="gpu-memory-issues">GPU &amp; Memory Issues<a class="headerlink" href="#gpu-memory-issues" title="Permanent link">&para;</a></h1>
-<p>GPU and memory management.</p>
-<h2 id="monitor-gpu-usage">Monitor GPU Usage<a class="headerlink" href="#monitor-gpu-usage" title="Permanent link">&para;</a></h2>
+<h1 id="gpu">GPU・メモリの問題<a class="headerlink" href="#gpu" title="Permanent link">&para;</a></h1>
+<p>GPUとメモリの管理方法。</p>
+<hr />
+<h2 id="gpu_1">GPU使用量の監視<a class="headerlink" href="#gpu_1" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>watch<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span>nvidia-smi
 </span></code></pre></div>
-<h2 id="out-of-memory-solutions">Out of Memory Solutions<a class="headerlink" href="#out-of-memory-solutions" title="Permanent link">&para;</a></h2>
-<h3 id="reduce-data-size">Reduce Data Size<a class="headerlink" href="#reduce-data-size" title="Permanent link">&para;</a></h3>
+<hr />
+<h2 id="_1">メモリ不足の解決策<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h3 id="_2">データサイズの削減<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
-<th>Method</th>
-<th>Command</th>
-<th>VRAM Saved</th>
+<th>方法</th>
+<th>コマンド</th>
+<th>節約VRAM</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Lower FPS</td>
-<td><code>fps=3</code> instead of <code>fps=5</code></td>
-<td>~30%</td>
+<td>FPSを下げる</td>
+<td><code>fps=3</code>（5fpsの代わりに）</td>
+<td>約30%</td>
 </tr>
 <tr>
-<td>Downscale</td>
+<td>解像度を下げる</td>
 <td><code>scale=1920:1080</code></td>
-<td>~75%</td>
+<td>約75%</td>
 </tr>
 <tr>
-<td>Fewer frames</td>
-<td>Select best 200</td>
-<td>Variable</td>
+<td>フレーム数を減らす</td>
+<td>最良の200フレームを選択</td>
+<td>状況による</td>
 </tr>
 </tbody>
 </table>
-<h3 id="optimize-memory">Optimize Memory<a class="headerlink" href="#optimize-memory" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># PyTorch memory settings</span>
+<h3 id="_3">メモリの最適化<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># PyTorchメモリ設定</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PYTORCH_CUDA_ALLOC_CONF</span><span class="o">=</span>expandable_segments:True
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Clear cache</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># キャッシュのクリア</span>
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import torch; torch.cuda.empty_cache()&quot;</span>
 </span></code></pre></div>
-<h2 id="vram-requirements">VRAM Requirements<a class="headerlink" href="#vram-requirements" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="fpsvram">解像度・FPS別VRAM要件<a class="headerlink" href="#fpsvram" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Resolution</th>
+<th>解像度</th>
 <th>FPS</th>
-<th>Frames</th>
-<th>VRAM Needed</th>
+<th>フレーム数</th>
+<th>必要VRAM</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>4K</td>
 <td>5</td>
-<td>~329</td>
+<td>約329枚</td>
 <td>48 GB</td>
 </tr>
 <tr>
 <td>4K</td>
 <td>3</td>
-<td>~197</td>
+<td>約197枚</td>
 <td>24 GB</td>
 </tr>
 <tr>
 <td>2K</td>
 <td>5</td>
-<td>~329</td>
+<td>約329枚</td>
 <td>12 GB</td>
 </tr>
 <tr>
 <td>1080p</td>
 <td>5</td>
-<td>~329</td>
+<td>約329枚</td>
 <td>8 GB</td>
 </tr>
 </tbody>

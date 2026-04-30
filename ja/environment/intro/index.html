@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#environment-setup-introduction" class="md-skip">
+        <a href="#_1" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -780,10 +780,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        概要
       
     </span>
   </a>
@@ -791,10 +791,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installation-order" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installation Order
+        インストール順序
       
     </span>
   </a>
@@ -802,10 +802,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#time-required" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Time Required
+        所要時間
       
     </span>
   </a>
@@ -813,10 +813,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quick-start" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick Start
+        クイックスタート
       
     </span>
   </a>
@@ -2072,10 +2072,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        概要
       
     </span>
   </a>
@@ -2083,10 +2083,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installation-order" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installation Order
+        インストール順序
       
     </span>
   </a>
@@ -2094,10 +2094,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#time-required" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Time Required
+        所要時間
       
     </span>
   </a>
@@ -2105,10 +2105,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quick-start" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quick Start
+        クイックスタート
       
     </span>
   </a>
@@ -2135,68 +2135,74 @@
   
 
 
-<h1 id="environment-setup-introduction">Environment Setup Introduction<a class="headerlink" href="#environment-setup-introduction" title="Permanent link">&para;</a></h1>
-<p>Complete environment setup for the 3DGS pipeline.</p>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>The pipeline requires three main components:
-1. <strong>CUDA</strong> - GPU acceleration
-2. <strong>COLMAP</strong> - Structure-from-Motion
-3. <strong>3D Gaussian Splatting</strong> - Neural rendering</p>
-<h2 id="installation-order">Installation Order<a class="headerlink" href="#installation-order" title="Permanent link">&para;</a></h2>
+<h1 id="_1">環境構築の概要<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>3DGSパイプラインの完全な環境構築ガイドです。</p>
+<hr />
+<h2 id="_2">概要<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>パイプラインには3つの主要コンポーネントが必要です：</p>
+<ol>
+<li><strong>CUDA</strong> — GPUアクセラレーション</li>
+<li><strong>COLMAP</strong> — Structure-from-Motion</li>
+<li><strong>3D Gaussian Splatting</strong> — ニューラルレンダリング</li>
+</ol>
+<hr />
+<h2 id="_3">インストール順序<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph LR
     A[CUDA 12.4] --&gt; B[Python/Conda]
     B --&gt; C[COLMAP]
     B --&gt; D[3DGS]
-    C --&gt; E[Ready]
+    C --&gt; E[完了]
     D --&gt; E</code></pre>
-<h2 id="time-required">Time Required<a class="headerlink" href="#time-required" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="_4">所要時間<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Component</th>
-<th>Time</th>
-<th>Difficulty</th>
+<th>コンポーネント</th>
+<th>時間</th>
+<th>難易度</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>CUDA</td>
-<td>10 min</td>
-<td>Easy</td>
+<td>10分</td>
+<td>易</td>
 </tr>
 <tr>
 <td>Python/Conda</td>
-<td>5 min</td>
-<td>Easy</td>
+<td>5分</td>
+<td>易</td>
 </tr>
 <tr>
 <td>COLMAP</td>
-<td>20 min</td>
-<td>Medium</td>
+<td>20分</td>
+<td>中</td>
 </tr>
 <tr>
 <td>3DGS</td>
-<td>15 min</td>
-<td>Medium</td>
+<td>15分</td>
+<td>中</td>
 </tr>
 <tr>
-<td><strong>Total</strong></td>
-<td><strong>~50 min</strong></td>
-<td><strong>Medium</strong></td>
+<td><strong>合計</strong></td>
+<td><strong>約50分</strong></td>
+<td><strong>中</strong></td>
 </tr>
 </tbody>
 </table>
-<h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
-<p>Already know what you're doing?</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Install CUDA 12.4</span>
+<hr />
+<h2 id="_5">クイックスタート<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>手順を把握している方向け：</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># CUDA 12.4のインストール</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>wget<span class="w"> </span>https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>cuda-keyring_1.1-1_all.deb
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>cuda-toolkit-12-4
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># Install COLMAP</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># COLMAPのインストール</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>colmap
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># Install 3DGS</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># 3DGSのインストール</span>
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/graphdeco-inria/gaussian-splatting.git
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nb">cd</span><span class="w"> </span>gaussian-splatting
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>3dgs<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10<span class="w"> </span>-y
@@ -2204,7 +2210,7 @@
 </span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>pip<span class="w"> </span>install<span class="w"> </span>torch<span class="w"> </span>torchvision<span class="w"> </span>--index-url<span class="w"> </span>https://download.pytorch.org/whl/cu124
 </span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt<span class="w"> </span>--no-build-isolation
 </span></code></pre></div>
-<p>For detailed instructions, follow the guides in order.</p>
+<p>詳細な手順は各ガイドを順番にご覧ください。</p>
 
 
 

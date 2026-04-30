@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pipeline-overview" class="md-skip">
+        <a href="#_1" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -1210,10 +1210,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stages" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stages
+        処理ステージ
       
     </span>
   </a>
@@ -1221,21 +1221,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stage-details" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stage Details
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-execution" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Quick Execution
+        ステージ詳細
       
     </span>
   </a>
@@ -2061,10 +2050,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stages" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stages
+        処理ステージ
       
     </span>
   </a>
@@ -2072,21 +2061,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#stage-details" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stage Details
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quick-execution" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Quick Execution
+        ステージ詳細
       
     </span>
   </a>
@@ -2113,63 +2091,63 @@
   
 
 
-<h1 id="pipeline-overview">Pipeline Overview<a class="headerlink" href="#pipeline-overview" title="Permanent link">&para;</a></h1>
-<p>Complete 3DGS pipeline workflow.</p>
-<h2 id="stages">Stages<a class="headerlink" href="#stages" title="Permanent link">&para;</a></h2>
+<h1 id="_1">パイプライン概要<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>3DGSパイプラインの完全なワークフロー。</p>
+<hr />
+<h2 id="_2">処理ステージ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph LR
-    A[1. Video] --&gt; B[2. Frames]
+    A[1. 動画] --&gt; B[2. フレーム]
     B --&gt; C[3. COLMAP]
     C --&gt; D[4. 3DGS]
-    D --&gt; E[5. Render]
-    E --&gt; F[6. Traits]</code></pre>
-<h2 id="stage-details">Stage Details<a class="headerlink" href="#stage-details" title="Permanent link">&para;</a></h2>
+    D --&gt; E[5. レンダリング]
+    E --&gt; F[6. 形質抽出]</code></pre>
+<hr />
+<h2 id="_3">ステージ詳細<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Stage</th>
-<th>Input</th>
-<th>Output</th>
-<th>Time</th>
+<th>ステージ</th>
+<th>入力</th>
+<th>出力</th>
+<th>所要時間</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1. Video Processing</td>
+<td>1. 動画処理</td>
 <td>MP4</td>
-<td>Frames (JPG)</td>
-<td>1 min</td>
+<td>フレーム（JPG）</td>
+<td>1分</td>
 </tr>
 <tr>
 <td>2. COLMAP SfM</td>
-<td>Frames</td>
-<td>Sparse model</td>
-<td>30 min</td>
+<td>フレーム</td>
+<td>スパースモデル</td>
+<td>30分</td>
 </tr>
 <tr>
-<td>3. 3DGS Training</td>
+<td>3. 3DGS学習</td>
 <td>COLMAP</td>
-<td>Point cloud</td>
-<td>20 min</td>
+<td>点群</td>
+<td>20分</td>
 </tr>
 <tr>
-<td>4. Rendering</td>
-<td>Point cloud</td>
-<td>Images</td>
-<td>5 min</td>
+<td>4. レンダリング</td>
+<td>点群</td>
+<td>画像</td>
+<td>5分</td>
 </tr>
 <tr>
-<td>5. Trait Extraction</td>
-<td>Images</td>
-<td>Measurements</td>
-<td>2 min</td>
+<td>5. 形質抽出</td>
+<td>画像</td>
+<td>計測値</td>
+<td>2分</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Total:</strong> ~1 hour per date</p>
-<h2 id="quick-execution">Quick Execution<a class="headerlink" href="#quick-execution" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># See individual stage pages for details</span>
-</span></code></pre></div>
-<p>Next: <a href="../video-processing/">Video Processing</a></p>
+<p><strong>合計：</strong> 1日付あたり約1時間</p>
+<hr />
+<p>次：<a href="../video-processing/">動画処理</a></p>
 
 
 

@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#colmap-parameters" class="md-skip">
+        <a href="#colmap" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -1467,10 +1467,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#critical-parameters" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Critical Parameters
+        重要なパラメータ
       
     </span>
   </a>
@@ -1478,10 +1478,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-these-settings" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why These Settings?
+        なぜこれらの設定か？
       
     </span>
   </a>
@@ -2050,10 +2050,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#critical-parameters" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Critical Parameters
+        重要なパラメータ
       
     </span>
   </a>
@@ -2061,10 +2061,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-these-settings" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why These Settings?
+        なぜこれらの設定か？
       
     </span>
   </a>
@@ -2091,19 +2091,21 @@
   
 
 
-<h1 id="colmap-parameters">COLMAP Parameters<a class="headerlink" href="#colmap-parameters" title="Permanent link">&para;</a></h1>
-<p>Optimal COLMAP settings.</p>
-<h2 id="critical-parameters">Critical Parameters<a class="headerlink" href="#critical-parameters" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>--ImageReader.single_camera<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="c1"># One camera model</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>--ImageReader.camera_model<span class="w"> </span>PINHOLE<span class="w">  </span><span class="c1"># Camera type</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>--Mapper.ba_global_max_num_iterations<span class="w"> </span><span class="m">20</span><span class="w">  </span><span class="c1"># Prevent crash</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>--Mapper.max_num_models<span class="w"> </span><span class="m">1</span><span class="w">  </span><span class="c1"># Single reconstruction</span>
+<h1 id="colmap">COLMAPパラメータ<a class="headerlink" href="#colmap" title="Permanent link">&para;</a></h1>
+<p>最適なCOLMAP設定。</p>
+<hr />
+<h2 id="_1">重要なパラメータ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>--ImageReader.single_camera<span class="w"> </span><span class="m">1</span><span class="w">          </span><span class="c1"># 単一カメラモデル</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>--ImageReader.camera_model<span class="w"> </span>PINHOLE<span class="w">     </span><span class="c1"># カメラの種類</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>--Mapper.ba_global_max_num_iterations<span class="w"> </span><span class="m">20</span><span class="w">  </span><span class="c1"># クラッシュ防止</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>--Mapper.max_num_models<span class="w"> </span><span class="m">1</span><span class="w">              </span><span class="c1"># 単一再構成</span>
 </span></code></pre></div>
-<h2 id="why-these-settings">Why These Settings?<a class="headerlink" href="#why-these-settings" title="Permanent link">&para;</a></h2>
+<hr />
+<h2 id="_2">なぜこれらの設定か？<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>single_camera=1</strong>: All frames from same camera</li>
-<li><strong>BA iterations=20</strong>: Prevents SIGSEGV error</li>
-<li><strong>exhaustive_matcher</strong>: Best for fixed viewpoint</li>
+<li><strong>single_camera=1：</strong> 全フレームが同一カメラから撮影</li>
+<li><strong>BA iterations=20：</strong> SIGSEGVエラーを防止</li>
+<li><strong>exhaustive_matcher：</strong> 固定視点に最適</li>
 </ul>
 
 

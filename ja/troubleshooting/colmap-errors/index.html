@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#colmap-errors" class="md-skip">
+        <a href="#colmap" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -1640,10 +1640,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#segmentation-fault" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Segmentation Fault
+        セグメンテーションフォルト
       
     </span>
   </a>
@@ -1651,10 +1651,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#only-21426-images-registered" class="md-nav__link">
+  <a href="#14262" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Only 2/1426 Images Registered
+        1426枚中2枚しか登録されない
       
     </span>
   </a>
@@ -1662,10 +1662,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#feature-extraction-flag-not-recognized" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Feature Extraction Flag Not Recognized
+        フラグが認識されない
       
     </span>
   </a>
@@ -2061,10 +2061,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#segmentation-fault" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Segmentation Fault
+        セグメンテーションフォルト
       
     </span>
   </a>
@@ -2072,10 +2072,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#only-21426-images-registered" class="md-nav__link">
+  <a href="#14262" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Only 2/1426 Images Registered
+        1426枚中2枚しか登録されない
       
     </span>
   </a>
@@ -2083,10 +2083,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#feature-extraction-flag-not-recognized" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Feature Extraction Flag Not Recognized
+        フラグが認識されない
       
     </span>
   </a>
@@ -2113,23 +2113,26 @@
   
 
 
-<h1 id="colmap-errors">COLMAP Errors<a class="headerlink" href="#colmap-errors" title="Permanent link">&para;</a></h1>
-<p>COLMAP-specific troubleshooting.</p>
-<h2 id="segmentation-fault">Segmentation Fault<a class="headerlink" href="#segmentation-fault" title="Permanent link">&para;</a></h2>
-<p><strong>Cause:</strong> Bundle adjustment overflow</p>
-<p><strong>Solution:</strong>
+<h1 id="colmap">COLMAPエラー<a class="headerlink" href="#colmap" title="Permanent link">&para;</a></h1>
+<p>COLMAP固有のトラブルシューティング。</p>
+<hr />
+<h2 id="_1">セグメンテーションフォルト<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><strong>原因：</strong> バンドル調整のオーバーフロー</p>
+<p><strong>解決策：</strong>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>--Mapper.ba_global_max_num_iterations<span class="w"> </span><span class="m">20</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>--Mapper.max_num_models<span class="w"> </span><span class="m">1</span>
 </span></code></pre></div></p>
-<h2 id="only-21426-images-registered">Only 2/1426 Images Registered<a class="headerlink" href="#only-21426-images-registered" title="Permanent link">&para;</a></h2>
-<p><strong>Cause:</strong> Wrong matcher for video type</p>
-<p><strong>Solution:</strong> Use exhaustive_matcher for fixed viewpoint:
+<hr />
+<h2 id="14262">1426枚中2枚しか登録されない<a class="headerlink" href="#14262" title="Permanent link">&para;</a></h2>
+<p><strong>原因：</strong> 動画の種類に対して不適切なマッチャー</p>
+<p><strong>解決策：</strong> 固定視点には exhaustive_matcher を使用：
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>colmap<span class="w"> </span>exhaustive_matcher<span class="w"> </span>--database_path<span class="w"> </span>database.db
 </span></code></pre></div></p>
-<h2 id="feature-extraction-flag-not-recognized">Feature Extraction Flag Not Recognized<a class="headerlink" href="#feature-extraction-flag-not-recognized" title="Permanent link">&para;</a></h2>
-<p><strong>Old:</strong> <code>--SiftExtraction.use_gpu</code><br />
-<strong>New:</strong> <code>--FeatureExtraction.use_gpu=1</code></p>
-<p>COLMAP v3.14+ changed flag names.</p>
+<hr />
+<h2 id="_2">フラグが認識されない<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><strong>旧：</strong> <code>--SiftExtraction.use_gpu</code><br />
+<strong>新：</strong> <code>--FeatureExtraction.use_gpu=1</code></p>
+<p>COLMAP v3.14以降でフラグ名が変更されました。</p>
 
 
 

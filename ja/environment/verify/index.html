@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#environment-verification" class="md-skip">
+        <a href="#_1" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -920,15 +920,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#checklist" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Checklist
+        チェックリスト
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Checklist">
+    <nav class="md-nav" aria-label="チェックリスト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1003,10 +1003,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#all-green" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        All Green?
+        全て確認できたら？
       
     </span>
   </a>
@@ -1014,10 +1014,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#issues" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Issues?
+        問題が発生した場合
       
     </span>
   </a>
@@ -2133,15 +2133,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#checklist" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Checklist
+        チェックリスト
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Checklist">
+    <nav class="md-nav" aria-label="チェックリスト">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2216,10 +2216,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#all-green" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        All Green?
+        全て確認できたら？
       
     </span>
   </a>
@@ -2227,10 +2227,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#issues" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Issues?
+        問題が発生した場合
       
     </span>
   </a>
@@ -2257,39 +2257,41 @@
   
 
 
-<h1 id="environment-verification">Environment Verification<a class="headerlink" href="#environment-verification" title="Permanent link">&para;</a></h1>
-<p>Verify all components are installed correctly.</p>
-<h2 id="checklist">Checklist<a class="headerlink" href="#checklist" title="Permanent link">&para;</a></h2>
-<p>Run each command and verify output:</p>
+<h1 id="_1">環境の動作確認<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>全コンポーネントが正しくインストールされているか確認します。</p>
+<hr />
+<h2 id="_2">チェックリスト<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>各コマンドを実行し、出力を確認してください：</p>
 <h3 id="cuda">CUDA<a class="headerlink" href="#cuda" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>nvcc<span class="w"> </span>--version
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># ✅ Should show: release 12.4</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># ✅ 表示されるべき内容：release 12.4</span>
 </span></code></pre></div>
 <h3 id="gpu">GPU<a class="headerlink" href="#gpu" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>nvidia-smi
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># ✅ Should show your GPU and CUDA 12.4</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># ✅ 表示されるべき内容：GPUの情報とCUDA 12.4</span>
 </span></code></pre></div>
 <h3 id="python">Python<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>python<span class="w"> </span>--version
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># ✅ Should show: Python 3.10.x</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># ✅ 表示されるべき内容：Python 3.10.x</span>
 </span></code></pre></div>
 <h3 id="pytorch">PyTorch<a class="headerlink" href="#pytorch" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import torch; print(torch.__version__, torch.cuda.is_available())&quot;</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># ✅ Should show: 2.x.x+cu124 True</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># ✅ 表示されるべき内容：2.x.x+cu124 True</span>
 </span></code></pre></div>
 <h3 id="colmap">COLMAP<a class="headerlink" href="#colmap" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>colmap<span class="w"> </span>-h
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># ✅ Should show help message</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># ✅ 表示されるべき内容：ヘルプメッセージ</span>
 </span></code></pre></div>
 <h3 id="3dgs">3DGS<a class="headerlink" href="#3dgs" title="Permanent link">&para;</a></h3>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>~/gaussian-splatting
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>python<span class="w"> </span>train.py<span class="w"> </span>--help
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># ✅ Should show training options</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># ✅ 表示されるべき内容：学習オプション</span>
 </span></code></pre></div>
-<h2 id="all-green">All Green?<a class="headerlink" href="#all-green" title="Permanent link">&para;</a></h2>
-<p>→ Ready for <a href="../../data-prep/video-requirements/">Data Preparation</a></p>
-<h2 id="issues">Issues?<a class="headerlink" href="#issues" title="Permanent link">&para;</a></h2>
-<p>→ Check <a href="../../troubleshooting/common-issues/">Troubleshooting</a></p>
+<hr />
+<h2 id="_3">全て確認できたら？<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>→ <a href="../../data-prep/video-requirements/">データ準備</a>へ進む</p>
+<h2 id="_4">問題が発生した場合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>→ <a href="../../troubleshooting/common-issues/">トラブルシューティング</a>を確認する</p>
 
 
 
