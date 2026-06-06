@@ -10,7 +10,7 @@ Train the 3D Gaussian Splatting model from the COLMAP sparse reconstruction.
 graph LR
     A[🗺️ Sparse Model<br/>cameras + points3D] -->|Initialize| B[✨ Gaussian Splats<br/>Initial cloud]
     B -->|30,000 iterations| C[🌱 Dense Model<br/>point_cloud.ply]
-    C -->|Evaluate| D[📊 PSNR ~23.80 dB]
+    C -->|Evaluate| D[📊 PSNR ~23.71 dB]
     style A fill:#e1f5ff
     style C fill:#e1ffe1
     style D fill:#fff3e0
@@ -78,7 +78,7 @@ The terminal prints metrics every 100 iterations:
 [24000/30000] L1 loss=0.0183 | PSNR=23.42 | Gaussians=1,234,567
 [24100/30000] L1 loss=0.0181 | PSNR=23.55 | Gaussians=1,241,023
 ...
-[30000/30000] L1 loss=0.0175 | PSNR=23.80 | Gaussians=1,287,441
+[30000/30000] L1 loss=0.0175 | PSNR=23.71 | Gaussians=1,287,441
 ```
 
 | Metric | What it means | Target value |
@@ -162,21 +162,21 @@ ls -lh output/point_cloud/iteration_30000/point_cloud.ply
 !!! success "Success Criteria"
     - ✅ `point_cloud.ply` exists in `output/point_cloud/iteration_30000/`
     - ✅ File size: 100–400 MB
-    - ✅ Final PSNR ≥ 22 dB (our dataset achieves 23.80 dB)
+    - ✅ Final PSNR ≥ 22 dB (our dataset achieves 23.71 dB)
     - ✅ No CUDA OOM errors during training
 
 ---
 
 ## Our Training Results
 
-Across our 22-date, 50-day validation dataset:
+Across our 22-date, 49-day validation dataset:
 
 ![PSNR over time showing consistent reconstruction quality across all 22 dates](../assets/images/figures/psnr_over_time_v2.png){ width="100%" }
-*PSNR across all 22 capture dates — mean 23.80 dB, CV = 3.5% (excellent temporal consistency)*
+*PSNR across all 22 capture dates — mean 23.71 dB, CV = 3.5% (excellent temporal consistency)*
 
 | Metric | Value |
 |--------|-------|
-| Mean PSNR | 23.80 dB |
+| Mean PSNR | 23.71 dB |
 | Std deviation | ±0.83 dB |
 | Temporal CV | 3.5% |
 | GPU | RTX 6000 Ada (48GB) |

@@ -110,13 +110,13 @@ graph LR
 このパイプラインは以下を達成しています：
 
 !!! success "性能指標"
-    - **PSNR：** 23.84 ± 0.83 dB（再構成品質）
-    - **時間的安定性：** CV = 3.5%（非常に高い一貫性）
-    - **草丈抽出：** CV = 9.7%（スケール不変手法）
-    - **改善率：** PLY手法比 44.7ポイント向上
+    - **PSNR：** 23.71 dB（条件1、5 fps）· 22セッション平均 23.84 dB
+    - **時間的安定性：** PSNR CV = 3.5%（非常に高い一貫性）
+    - **草丈抽出：** h_norm CV = 9.8%（スケール不変手法）
+    - **改善率：** PLY直接法比 2.86倍安定（28.0% → 9.8% CV）
 
 ![結果サマリー](assets/images/figures/results-summary.png)
-*50日間にわたる22日分のデータで検証済み*
+*49日間にわたる22日分のデータで検証済み*
 
 ---
 
@@ -159,7 +159,7 @@ graph LR
 
     ```bash
     # 既存のモデルから形質を抽出
-    python scripts/extract_traits.py --date 20260119
+    python analysis/compute_heights_rendered.py --dates 20260119
     ```
 
 ---

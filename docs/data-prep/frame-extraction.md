@@ -43,7 +43,7 @@ We tested extraction at 1, 3, 5, 8, and 10 fps:
 |---------------|--------|------|-----------|--------|
 | 1 fps | ~60 | 19.2 dB | 8 GB | ❌ Too few views |
 | 3 fps | ~180 | 22.1 dB | 18 GB | ⚠️ Acceptable |
-| **5 fps** | **~329** | **23.80 dB** | **38 GB** | **✅ Optimal** |
+| **5 fps** | **~329** | **23.71 dB** | **38 GB** | **✅ Optimal** |
 | 8 fps | ~480 | 23.85 dB | 52 GB | ❌ OOM on 48GB GPU |
 | 10 fps | ~600 | 23.86 dB | OOM | ❌ Not feasible |
 

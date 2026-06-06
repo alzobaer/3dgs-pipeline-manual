@@ -110,13 +110,13 @@ See [detailed requirements](getting-started/requirements.md) for minimum specifi
 This pipeline achieves:
 
 !!! success "Performance Metrics"
-    - **PSNR:** 23.84 ± 0.83 dB (reconstruction quality)
-    - **Temporal Stability:** CV = 3.5% (excellent consistency)
-    - **Height Extraction:** CV = 9.7% (scale-invariant method)
-    - **Improvement:** 44.7 percentage points over PLY method
+    - **PSNR:** 23.71 dB (Cond. 1, 5 fps) · mean 23.84 dB across 22 sessions
+    - **Temporal Stability:** PSNR CV = 3.5% (excellent consistency)
+    - **Height Extraction:** h_norm CV = 9.8% (scale-invariant method)
+    - **Improvement:** 2.86× more stable than direct PLY (28.0% → 9.8% CV)
 
 ![Results Summary](assets/images/figures/results-summary.png)
-*Validated across 22 dates over 50 days*
+*Validated across 22 dates over 49 days*
 
 ---
 
@@ -159,7 +159,7 @@ This pipeline achieves:
 
     ```bash
     # Extract traits from existing models
-    python scripts/extract_traits.py --date 20260119
+    python analysis/compute_heights_rendered.py --dates 20260119
     ```
 
 ---

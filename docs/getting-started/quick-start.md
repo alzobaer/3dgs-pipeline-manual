@@ -218,7 +218,7 @@ After completing these steps, you should have:
 ✅ Test reconstruction completed  
 
 **Quality Metrics (for our dataset):**
-- PSNR: ~23.80 dB (good)
+- PSNR: ~23.71 dB (good)
 - Training time: ~18-30 minutes
 - File size: ~200 MB (point cloud)
 

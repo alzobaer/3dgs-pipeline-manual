@@ -1,6 +1,6 @@
 # Recommended Settings
 
-Our validated configuration (PSNR: 23.80 dB).
+Our validated configuration (PSNR: 23.71 dB).
 
 ## Complete Pipeline
 

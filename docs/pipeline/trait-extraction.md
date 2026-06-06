@@ -1,6 +1,6 @@
 # Stage 5: Trait Extraction
 
-Extract scale-invariant plant measurements from rendered images.
+Extract scale-invariant plant measurements from the canonical 3DGS render.
 
 ---
 
@@ -8,14 +8,14 @@ Extract scale-invariant plant measurements from rendered images.
 
 ```mermaid
 graph LR
-    A[📷 Rendered Images<br/>Normalized view] -->|Segmentation| B[🌿 Plant Mask<br/>Binary mask]
-    B -->|Height Calc| C[📏 Image-space Height<br/>Pixel ratio]
-    C -->|Calibration| D[📊 Plant Traits<br/>Height · Canopy]
+    A[🎥 3DGS Model<br/>per session] -->|Render pose 025| B[📷 Canonical Image<br/>1600×899 px]
+    B -->|HSV threshold| C[🌿 Plant Mask]
+    C -->|5th–95th percentile| D[📊 h_norm · a_norm]
     style A fill:#e1f5ff
     style D fill:#e1ffe1
 ```
 
-**Estimated time:** ~2 minutes per date
+**Estimated time:** ~3 minutes per session (GPU render + analysis)
 
 ---
 
@@ -24,230 +24,170 @@ graph LR
 Traditional PLY-based methods measure directly in 3D coordinate space — but COLMAP assigns **different scales** to each date's reconstruction. This makes direct comparison across dates unreliable.
 
 ![Diagram showing scale shift problem in PLY coordinates vs consistency in image space](../assets/images/figures/ply_vs_rendered_comparison_v2.png){ width="100%" }
-*The scale inconsistency problem: PLY-based height (left) shows erratic shifts between dates. Our image-space method (right) is stable across all 22 dates.*
+*Scale inconsistency: PLY-based height (left) shows erratic shifts between dates. Our image-space method (right) is stable across all 22 dates.*
 
-Our solution: measure plant height **in rendered image space** (pixels), where the plant occupies a consistent normalized position regardless of capture date.
+Our solution: synthesise a **canonical novel-view image** from COLMAP camera pose 025 (≈5.2 s into the walk at 5 fps) using the 3DGS renderer, then measure plant height in pixel space. The ratio cancels any COLMAP scale factor.
 
 ---
 
-## Step 1: Plant Segmentation
+## Step 1: Render the Canonical View
 
-Separate plant from background in each rendered image.
+Use the 3DGS renderer to synthesise the plant from **camera pose 025** — the same physical viewpoint across all 22 sessions.
+
+```python
+import json, sys, numpy as np, torch
+from argparse import Namespace
+sys.path.insert(0, '/path/to/gaussian-splatting')
+from gaussian_renderer import render, GaussianModel
+from utils.graphics_utils import getWorld2View2, getProjectionMatrix
+
+# Load camera pose 025 at native resolution
+with open('output/YYYYMMDD/gs_model/cameras.json') as f:
+    cam = json.load(f)[25]   # 0-indexed: index 25 = COLMAP pose 025
+
+W, H = cam['width'], cam['height']
+R = np.array(cam['rotation'], dtype=np.float64)
+C = np.array(cam['position'], dtype=np.float64)
+T = (-R @ C).astype(np.float32)
+FoVx = 2 * np.arctan(W / (2 * cam['fx']))
+FoVy = 2 * np.arctan(H / (2 * cam['fy']))
+```
+
+!!! info "Why pose 025?"
+    Camera pose 025 is the 26th COLMAP-estimated pose (0-indexed). At 5 fps it corresponds to frame_00026, which is ≈5.2 s into the walk — a front-perpendicular view of the crop lane that is geometrically identical across all sessions.
+
+---
+
+## Step 2: Plant Segmentation (HSV Thresholding)
+
+Segment plant from background using HSV colour thresholding.
 
 ```python
 import cv2
 import numpy as np
-from pathlib import Path
 
-def segment_plant(image_path: str) -> np.ndarray:
+def segment_plant(img_rgb: np.ndarray) -> np.ndarray:
     """
-    Segment plant from background using HSV color thresholding.
-    Returns binary mask where 255 = plant pixels.
+    Segment green vegetation. Returns binary mask (255 = plant).
+    HSV thresholds (OpenCV convention, 8-bit):
+      Hue  : [25, 95]   (degrees / 2)
+      Sat  : >= 20
+      Val  : >= 30
     """
-    img = cv2.imread(image_path)
-    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-
-    # Green vegetation threshold (tuned for tomato plants)
-    lower_green = np.array([25, 40, 40])
-    upper_green = np.array([90, 255, 255])
-    mask = cv2.inRange(hsv, lower_green, upper_green)
-
-    # Clean up mask
-    kernel = np.ones((5, 5), np.uint8)
-    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
-    mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
-
+    img_bgr = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2BGR)
+    hsv     = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2HSV)
+    mask    = cv2.inRange(hsv,
+                          np.array([25,  20,  30]),   # lower bound
+                          np.array([95, 255, 255]))   # upper bound
     return mask
 ```
 
-!!! tip "📸 Screenshot to capture"
-    Show a rendered image alongside its binary segmentation mask — plant pixels in white, background in black.
-
-![Side-by-side of rendered plant image and its binary segmentation mask](../assets/images/screenshots/21-segmentation-mask.png){ width="100%" }
-*Left: Rendered image. Right: Binary mask — white pixels are the detected plant. Clean mask boundaries are essential for accurate height measurement.*
+!!! warning "Threshold values matter"
+    The thresholds above match the published paper exactly (§3.3). Earlier versions of this manual showed different values ([25,40,40]–[90,255,255]) — those are incorrect. Use the values above.
 
 ---
 
-## Step 2: Scale-Invariant Height Extraction
+## Step 3: Scale-Invariant Height Extraction
 
-Measure plant height as a **ratio** of image height — this is the key to scale invariance.
+Measure plant height as a **ratio** of image height using 5th–95th-percentile rows.
 
 ```python
-def extract_height_pixels(mask: np.ndarray) -> dict:
+def extract_traits(mask: np.ndarray) -> dict:
     """
-    Extract plant height in image-space coordinates.
-    Returns height as fraction of image height (0.0 to 1.0).
+    h_norm  = (r95 - r5) / H_R    (5th–95th-percentile row span)
+    a_norm  = green_pixel_count / (H_R * W_R)
+    Both are in [0, 1] and scale-invariant.
     """
-    # Find plant pixel rows
+    H, W = mask.shape
     plant_rows = np.where(mask.any(axis=1))[0]
 
     if len(plant_rows) == 0:
-        return {"height_px": 0, "height_ratio": 0.0, "valid": False}
+        return {"h_norm": 0.0, "a_norm": 0.0, "valid": False}
 
-    top_px = plant_rows.min()       # topmost plant pixel
-    bottom_px = plant_rows.max()    # bottommost plant pixel (pot base)
-    height_px = bottom_px - top_px
+    r5  = float(np.percentile(plant_rows, 5))
+    r95 = float(np.percentile(plant_rows, 95))
 
-    # Normalize by image height → scale-invariant
-    height_ratio = height_px / mask.shape[0]
+    h_norm = (r95 - r5) / H
+    a_norm = float(mask.sum()) / 255.0 / (H * W)
 
     return {
-        "height_px": int(height_px),
-        "height_ratio": float(height_ratio),
-        "top_px": int(top_px),
-        "bottom_px": int(bottom_px),
-        "valid": True
+        "h_norm":     round(h_norm, 4),
+        "a_norm":     round(a_norm, 4),
+        "height_px":  round(r95 - r5, 1),
+        "top_row_px": round(r5, 1),
+        "bot_row_px": round(r95, 1),
+        "image_H":    H,
+        "image_W":    W,
+        "valid":      True,
     }
 ```
 
-!!! info "Why divide by image height?"
-    `height_ratio = height_px / image_height` makes the measurement independent of COLMAP's arbitrary scale factor. Whether the model was reconstructed at 1x or 2x scale, the ratio stays the same.
-
-![Annotated rendered image showing height measurement from pot base to plant apex with pixel ruler overlay](../assets/images/screenshots/22-height-measurement-overlay.png){ width="100%" }
-*Height measurement: vertical span from pot base (bottom anchor) to plant apex. Expressed as a ratio of total image height.*
+!!! info "Why 5th–95th percentile instead of min/max?"
+    Min/max rows are sensitive to isolated green pixels (e.g. stray leaves, reflections). The 5th–95th percentile gives a robust estimate of the plant's vertical extent while ignoring outliers.
 
 ---
 
-## Step 3: Full Pipeline Script
+## Step 4: Run for All 22 Sessions
 
-```python
-#!/usr/bin/env python3
-"""
-extract_traits.py — Scale-invariant trait extraction from 3DGS renders
-Usage: python extract_traits.py --renders_dir output/train/ours_30000/renders
-"""
-
-import cv2
-import numpy as np
-import pandas as pd
-from pathlib import Path
-import argparse
-
-def process_date(renders_dir: str, date: str) -> pd.DataFrame:
-    renders_path = Path(renders_dir)
-    results = []
-
-    for img_path in sorted(renders_path.glob("*.jpg")):
-        mask = segment_plant(str(img_path))
-        traits = extract_height_pixels(mask)
-        traits["image"] = img_path.name
-        traits["date"] = date
-        results.append(traits)
-
-    return pd.DataFrame(results)
-
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--renders_dir", required=True,
-                        help="Path to renders folder")
-    parser.add_argument("--date", required=True,
-                        help="Date identifier (e.g. 20260119)")
-    parser.add_argument("--output", default="traits.csv",
-                        help="Output CSV path")
-    args = parser.parse_args()
-
-    df = process_date(args.renders_dir, args.date)
-    valid = df[df["valid"]]
-    
-    mean_height = valid["height_ratio"].mean()
-    std_height = valid["height_ratio"].std()
-    cv = (std_height / mean_height) * 100
-
-    print(f"\nDate: {args.date}")
-    print(f"Valid frames: {len(valid)}/{len(df)}")
-    print(f"Mean height ratio: {mean_height:.4f}")
-    print(f"Std deviation:     {std_height:.4f}")
-    print(f"CV:                {cv:.1f}%")
-
-    df.to_csv(args.output, index=False)
-    print(f"\nSaved to: {args.output}")
-
-if __name__ == "__main__":
-    main()
-```
-
-### Run It
+The full reproducibility script is `analysis/compute_heights_rendered.py`. It loops over all sessions, renders from pose 025, and writes `analysis/heights_rendered.csv`.
 
 ```bash
-conda activate 3dgs
+conda activate gaussian_splatting
 
-python extract_traits.py \
-    --renders_dir output/train/ours_30000/renders \
-    --date 20260119 \
-    --output results/traits_20260119.csv
+python analysis/compute_heights_rendered.py
+# optional: process a subset
+python analysis/compute_heights_rendered.py --dates 20260119 20260123
+# optional: different output path
+python analysis/compute_heights_rendered.py --output results/heights_rendered.csv
 ```
 
-!!! tip "📸 Screenshot to capture"
-    Screenshot the terminal output showing the CV value for your date — compare it against the 9.7% benchmark.
+Expected output:
 
-![extract_traits.py terminal output showing date, valid frames, mean height, and CV percentage](../assets/images/screenshots/23-trait-extraction-output.png){ width="100%" }
-*Trait extraction output — CV should be close to 9.7% for well-reconstructed dates*
+```
+Processing 22 sessions → analysis/heights_rendered.csv
+Camera: COLMAP index 25  |  Iteration: 30000
+HSV thresholds: H∈[25,95], S≥20, V≥30
 
----
+  20260119  rendering ...  h_norm=0.8990  green_coverage=0.9312  [ok]
+  20260121  rendering ...  h_norm=0.8932  green_coverage=0.9584  [ok]
+  20260123  rendering ...  h_norm=0.7030  green_coverage=0.7063  [ok]
+  ...
 
-## Step 4: Time-Series Growth Analysis
-
-Aggregate traits across all dates to build growth curves:
-
-```bash
-# Run for all dates
-for DATE in 20260101 20260108 20260115 ...; do
-    python extract_traits.py \
-        --renders_dir data/$DATE/output/train/ours_30000/renders \
-        --date $DATE \
-        --output results/traits_$DATE.csv
-done
-
-# Combine all dates
-python -c "
-import pandas as pd, glob
-dfs = [pd.read_csv(f) for f in sorted(glob.glob('results/traits_*.csv'))]
-pd.concat(dfs).to_csv('results/all_traits.csv', index=False)
-print('Combined', len(dfs), 'dates')
-"
+Summary (22 sessions):
+  h_norm:         mean=0.8432  std=0.0826  CV=9.8%
+  green_coverage: mean=0.8653  std=0.1447  CV=16.7%
 ```
 
 ---
 
 ## Results
 
-### Height Consistency Across 22 Dates
+### Height CV Comparison
 
-![Growth curve showing stable plant height measurements across 50 days](../assets/images/figures/growth_curve_v2.png){ width="100%" }
-*Plant height growth curve across 22 dates — our image-space method (blue) shows smooth biological growth. PLY method (red) shows erratic scale shifts.*
+| Method | CV | vs Proposed |
+|--------|----|-------------|
+| **Proposed (render-space h_norm)** | **9.8%** | — |
+| Direct PLY height | 28.0% | 2.86× worse |
+| Scale-calibrated PLY | 35.1% | 3.58× worse |
+| Raw-frame baseline | 0.0% | *(trivial — same image every session)* |
 
-### CV Comparison
+!!! success "What 9.8% CV means"
+    The render-space h_norm varies by 9.8% across 22 sessions. Three known pruning events each cause drops of 15–27 percentage points — well above the background variation — confirming the method is sensitive to real biological change, not just measurement noise.
 
-![Bar chart comparing CV 9.7% our method vs 54.4% PLY method](../assets/images/screenshots/24-cv-comparison-chart.png){ width="100%" }
-*Our method achieves 9.7% CV vs 54.4% from traditional PLY — a 44.7 percentage point improvement*
-
-| Method | CV | Interpretation |
-|--------|----|----------------|
-| **Ours (image-space)** | **9.7%** | ✅ Biologically meaningful variation |
-| Traditional (PLY) | 54.4% | ❌ Dominated by scale artifacts |
-
-!!! success "What 9.7% CV means"
-    The measured height variation of 9.7% across repeated measurements of the same plant reflects real biological variability — not measurement error. This is the first validation of scale-invariant trait extraction from multi-date 3DGS reconstructions.
-
----
-
-## Output CSV Format
+### Output CSV Format (`heights_rendered.csv`)
 
 ```csv
-date,image,height_px,height_ratio,top_px,bottom_px,valid
-20260119,frame_0001.jpg,1124,0.521,412,1536,True
-20260119,frame_0002.jpg,1118,0.518,415,1533,True
-...
+date,height_px,height_norm,green_coverage,top_row_px,bottom_row_px,image_H,image_W,status
+20260119,808.2,0.8990,0.9312,44.9,853.1,899,1599,ok
+20260123,632.0,0.7030,0.7063,235.0,867.0,899,1600,ok
 ```
 
 | Column | Description |
 |--------|-------------|
-| `date` | Capture date identifier |
-| `height_px` | Plant height in pixels |
-| `height_ratio` | **Key metric** — height / image height (scale-invariant) |
-| `top_px` | Y-coordinate of plant apex |
-| `bottom_px` | Y-coordinate of pot base |
-| `valid` | Whether segmentation succeeded |
+| `height_norm` | **h_norm** — (r95−r5) / H_R, scale-invariant plant height |
+| `green_coverage` | **a_norm** — green pixel fraction, scale-invariant projected area |
+| `top_row_px` / `bottom_row_px` | r5 / r95 pixel rows |
+| `image_H` / `image_W` | native render resolution from cameras.json |
 
 ---
 

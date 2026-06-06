@@ -86,10 +86,10 @@ Parameters → Advanced Topics
 
 This pipeline is **validated on real greenhouse data**:
 
-- ✅ **22 capture dates** over 50 days
-- ✅ **PSNR: 23.80 dB** - High quality reconstruction
+- ✅ **22 capture dates** over 49 days
+- ✅ **PSNR: 23.71 dB** - High quality reconstruction
 - ✅ **100% success rate** - Robust pipeline
-- ✅ **Scale-invariant measurement** - 44.7pp improvement over traditional methods
+- ✅ **Scale-invariant measurement** - 18.2pp (2.86×) improvement over direct PLY measurement
 
 ---
 

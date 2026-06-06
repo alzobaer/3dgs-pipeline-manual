@@ -44,7 +44,7 @@ Storage: 10 TB HDD
 ```
 
 **Results:**
-- PSNR: 23.80 dB
+- PSNR: 23.71 dB
 - Training time: ~18-30 min per date
 - Success rate: 100% (22/22 dates)
 

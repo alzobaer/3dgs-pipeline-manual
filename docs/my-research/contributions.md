@@ -11,7 +11,7 @@ This page documents my original contributions to 3DGS-based plant phenotyping.
 Traditional PLY-based height measurement suffers from **temporal scale inconsistency**.
 
 ![PLY Method Issues](../assets/images/figures/ply-method-problems.png)
-*Figure 1: Scale inconsistency in PLY-based measurement across dates (CV: 54.4%)*
+*Figure 1: Scale inconsistency in PLY-based measurement across dates (CV: 28.0%)*
 
 !!! warning "Challenge Identified"
     Structure-from-Motion (SfM) reconstruction produces different coordinate scales for each capture date, making direct height comparison unreliable.
@@ -41,14 +41,14 @@ graph TD
 ### Results Comparison
 
 ![PLY vs Rendered](../assets/images/figures/ply_vs_rendered_comparison_v2.png){ width="100%" }
-*Figure 2: **My method achieves 44.7 percentage point improvement** (CV: 54.4% → 9.7%)*
+*Figure 2: **My method achieves 18.2 percentage point (2.86×) improvement** (CV: 28.0% → 9.8%)*
 
 !!! success "Original Contribution #1"
     **First demonstration of scale-invariant trait extraction from multi-date 3DGS reconstructions for plant phenotyping.**
     
     - **Method:** Image-space normalization
-    - **Result:** 44.7pp CV improvement
-    - **Validation:** 22 dates, 50 days
+    - **Result:** 18.2pp CV improvement (2.86×)
+    - **Validation:** 22 dates, 49 days
     - **Impact:** Enables reliable time-series phenotyping
 
 ---
@@ -106,7 +106,7 @@ I integrated IoT sensors measuring:
 ### Growth Monitoring Results
 
 ![Growth Curve](../assets/images/figures/growth_curve_v2.png){ width="100%" }
-*Figure 6: 50-day continuous monitoring with my pipeline*
+*Figure 6: 49-day continuous monitoring with my pipeline*
 
 ### Time-lapse Video
 
@@ -114,12 +114,12 @@ I integrated IoT sensors measuring:
   <source src="../../assets/videos/results/timelapse-growth.mp4" type="video/mp4">
 </video>
 
-*Video 2: 50 days of tomato growth captured with my 3DGS pipeline (Jan 19 - Mar 9, 2026)*
+*Video 2: 49 days of tomato growth captured with my 3DGS pipeline (Jan 19 - Mar 9, 2026)*
 
 !!! success "Original Contribution #3"
     **First long-term validation of 3DGS for time-series plant phenotyping.**
     
-    - Duration: 50 days
+    - Duration: 49 days
     - Frequency: 22 capture dates
     - Consistency: CV = 3.5% (PSNR)
     - Growth tracking: Positive correlation (r = 0.209)
@@ -148,10 +148,10 @@ I integrated IoT sensors measuring:
 
 | Contribution | Innovation | Impact | Validation |
 |--------------|-----------|---------|-----------|
-| **Scale-Invariant Measurement** | Image-space normalization | 44.7pp CV improvement | 22 dates, 50 days |
+| **Scale-Invariant Measurement** | Image-space normalization | 18.2pp CV improvement (2.86×) | 22 dates, 49 days |
 | **Environmental Correlation** | Humidity-PSNR relationship | First identification | r=+0.506*, p=0.032 |
 | **Radiation Classification** | Data-driven 100 W/m² threshold | WMO-validated method | Perfect balance n=9:9 |
-| **Long-term Validation** | 50-day continuous monitoring | Temporal consistency | CV = 3.5% |
+| **Long-term Validation** | 49-day continuous monitoring | Temporal consistency | CV = 3.5% |
 
 ---
 

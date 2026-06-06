@@ -32,7 +32,7 @@ What your input videos must look like for successful 3DGS reconstruction.
 The camera is **fixed** at one position — the plant rotates into view via orbital movement of the operator walking slowly around the plant.
 
 !!! info "Condition 1 vs Condition 2"
-    Our dataset uses **Condition 1**: single fixed viewpoint. We tested multiple viewpoints and Condition 1 achieved the best PSNR (23.80 dB) because consistent framing yields better temporal comparisons.
+    Our dataset uses **Condition 1**: single fixed viewpoint. We tested multiple viewpoints and Condition 1 achieved the best PSNR (23.71 dB) because consistent framing yields better temporal comparisons.
 
 ```
       [CAMERA]
@@ -126,7 +126,7 @@ Our validated dataset used in this research:
 
 | Property | Value |
 |----------|-------|
-| Total recording days | 50 days |
+| Total recording days | 49 days |
 | Usable capture dates | 22 |
 | Excluded dates | 28 (poor conditions, equipment issues) |
 | Video duration | ~60 seconds each |

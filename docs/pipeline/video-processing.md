@@ -60,7 +60,7 @@ ffmpeg -i video.mp4 \
 
 | Parameter | Value | Why |
 |-----------|-------|-----|
-| `fps=5` | 5 frames/sec | Optimal balance: ~329 frames fit in 48GB VRAM with PSNR 23.80 dB |
+| `fps=5` | 5 frames/sec | Optimal balance: ~329 frames fit in 48GB VRAM with PSNR 23.71 dB |
 | `qscale:v 2` | ~95% quality | High-fidelity JPEG needed for SIFT feature detection in COLMAP |
 | `frame_%04d.jpg` | Zero-padded | Ensures correct sort order (frame_0001.jpg → frame_0329.jpg) |
 
@@ -75,7 +75,7 @@ ffmpeg -i video.mp4 \
     - ~329 frames for 60-second video
     - Dense enough for COLMAP feature matching
     - Fits within 48GB VRAM
-    - **PSNR: 23.80 dB** on our dataset
+    - **PSNR: 23.71 dB** on our dataset
 
 === "Too Many Frames (> 8 fps)"
     - Redundant frames → slow COLMAP matching

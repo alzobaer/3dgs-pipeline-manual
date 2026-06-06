@@ -28,8 +28,8 @@ Save all screenshots to this folder: docs/assets/images/screenshots/
 | 20-metrics-output.png | metrics.py PSNR/SSIM/LPIPS output | pipeline/rendering |
 | 21-segmentation-mask.png | Rendered image + binary plant mask | pipeline/trait-extraction |
 | 22-height-measurement-overlay.png | Plant image with height ruler overlay | pipeline/trait-extraction |
-| 23-trait-extraction-output.png | extract_traits.py terminal output with CV | pipeline/trait-extraction |
-| 24-cv-comparison-chart.png | Bar chart: 9.7% vs 54.4% CV | pipeline/trait-extraction |
+| 23-trait-extraction-output.png | compute_heights_rendered.py terminal output with CV | pipeline/trait-extraction |
+| 24-cv-comparison-chart.png | Bar chart: 9.8% vs 28.0% CV | pipeline/trait-extraction |
 | 25-good-vs-bad-frame.png | Good frame vs bad frame comparison | data-prep/video-requirements |
 | 26-frame-quality-samples.png | 3 sample frames at 25/50/75% video | data-prep/frame-extraction |
 | 27-directory-structure.png | File browser showing complete date folder | data-prep/directory-structure |

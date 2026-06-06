@@ -51,7 +51,7 @@ python metrics.py -m /path/to/date_20260119/output
 
 | 指標 | 本研究の結果 | 最低許容値 |
 |-----|---------|--------|
-| PSNR | 23.80 dB | 20 dB以上 |
+| PSNR | 23.71 dB | 20 dB以上 |
 | SSIM | 0.82 | 0.75以上 |
 | LPIPS | 0.18 | 0.30未満 |
 

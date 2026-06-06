@@ -8,13 +8,13 @@ Complete details of the time-series plant phenotyping dataset used for validatio
 
 | Property | Value |
 |----------|-------|
-| **Duration** | 50 days (Jan 19 – Mar 9, 2026) |
+| **Duration** | 49 days (Jan 19 – Mar 9, 2026) |
 | **Capture dates** | 22 |
 | **Location** | [Happy Quality greenhouse](https://share.google/alrmfOUOLqGngzcbS), Fukuroi city, Shizuoka |
 | **Plant species** | Tomato (*Solanum lycopersicum*) |
 | **Camera** | Google Pixel 6a, 4K UHD |
 | **Capture method** | Fixed-viewpoint video, ~60s per date |
-| **Best PSNR** | 23.80 dB |
+| **Best PSNR** | 23.71 dB |
 | **Temporal CV** | 3.5% |
 
 ---
@@ -50,7 +50,7 @@ Complete details of the time-series plant phenotyping dataset used for validatio
 
 **Happy Quality Co., Ltd. greenhouse, Fukuroi city, Shizuoka Prefecture, Japan**
 
-The data was collected at a commercial tomato production greenhouse in Fukuroi city. The controlled environment provided consistent temperature and humidity conditions throughout the 50-day monitoring period.
+The data was collected at a commercial tomato production greenhouse in Fukuroi city. The controlled environment provided consistent temperature and humidity conditions throughout the 49-day monitoring period.
 
 ---
 
@@ -67,7 +67,7 @@ The data was collected at a commercial tomato production greenhouse in Fukuroi c
 
 | Metric | Mean | Std | Min | Max |
 |--------|------|-----|-----|-----|
-| PSNR (dB) | 23.80 | ±0.83 | — | — |
-| SSIM | 0.779 | — | — | — |
-| LPIPS | 0.216 | — | — | — |
+| PSNR (dB) | 23.71 | ±0.83 | — | — |
+| SSIM | 0.773 | — | — | — |
+| LPIPS | 0.222 | — | — | — |
 | Gaussians | ~630k | — | 188k | 668k |

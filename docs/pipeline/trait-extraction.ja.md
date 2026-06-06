@@ -1,6 +1,6 @@
 # Stage 5：形質抽出
 
-レンダリング画像からスケール不変な植物計測値を抽出します。
+正準3DGSレンダリング画像からスケール不変な植物計測値を抽出します。
 
 ---
 
@@ -8,14 +8,14 @@
 
 ```mermaid
 graph LR
-    A[📷 レンダリング画像<br/>正規化視点] -->|セグメンテーション| B[🌿 植物マスク]
-    B -->|草丈計算| C[📏 画像空間草丈]
-    C --> D[📊 植物形質<br/>草丈 · キャノピー]
+    A[🎥 3DGSモデル<br/>各セッション] -->|ポーズ025レンダリング| B[📷 正準画像<br/>1600×899 px]
+    B -->|HSV閾値処理| C[🌿 植物マスク]
+    C -->|第5〜95パーセンタイル| D[📊 h_norm · a_norm]
     style A fill:#e1f5ff
     style D fill:#e1ffe1
 ```
 
-**推定所要時間：** 1日付あたり約2分
+**推定所要時間：** 1セッションあたり約3分（GPUレンダリング＋解析）
 
 ---
 
@@ -23,11 +23,38 @@ graph LR
 
 従来のPLYベースの手法は三次元座標空間で計測しますが、COLMAPは各日付の再構成に**異なるスケール**を割り当てるため日付間の直接比較ができません。
 
-本手法の解決策：**レンダリング画像空間**（ピクセル）で草丈を計測します。撮影日に関わらず植物が画像内で一定の正規化された位置を占めるため、スケール不変になります。
+本手法の解決策：3DGSレンダラーでCOLMAPカメラポーズ025（5 fpsで撮影開始から約5.2秒）から**正準新視点画像**を合成し、画素空間で草丈を計測します。比率によりCOLMAPスケール係数が相殺されます。
 
 ---
 
-## Step 1：植物セグメンテーション
+## Step 1：正準視点のレンダリング
+
+全22セッションで同一の物理視点となる**カメラポーズ025**から植物をレンダリングします。
+
+```python
+import json, sys, numpy as np, torch
+sys.path.insert(0, '/path/to/gaussian-splatting')
+from gaussian_renderer import render, GaussianModel
+from utils.graphics_utils import getWorld2View2, getProjectionMatrix
+
+# ネイティブ解像度でカメラポーズ025を読み込み
+with open('output/YYYYMMDD/gs_model/cameras.json') as f:
+    cam = json.load(f)[25]   # 0インデックス：index 25 = COLMAPポーズ025
+
+W, H = cam['width'], cam['height']
+R = np.array(cam['rotation'], dtype=np.float64)
+C = np.array(cam['position'], dtype=np.float64)
+T = (-R @ C).astype(np.float32)
+FoVx = 2 * np.arctan(W / (2 * cam['fx']))
+FoVy = 2 * np.arctan(H / (2 * cam['fy']))
+```
+
+!!! info "なぜポーズ025？"
+    カメラポーズ025はCOLMAPが推定した26番目のポーズ（0インデックス）です。5 fpsでframe_00026に対応し、撮影開始から約5.2秒 — 全セッションで幾何学的に同一の正面垂直視点です。
+
+---
+
+## Step 2：植物セグメンテーション（HSV閾値処理）
 
 HSVカラー閾値処理で植物を背景から分離します。
 
@@ -35,117 +62,96 @@ HSVカラー閾値処理で植物を背景から分離します。
 import cv2
 import numpy as np
 
-def segment_plant(image_path: str) -> np.ndarray:
-    # HSVカラー閾値処理で植物を背景から分離
-    # 255=植物ピクセルのバイナリマスクを返す
-    img = cv2.imread(image_path)
-    hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-
-    # 緑色植生の閾値（トマト植物用に調整済み）
-    lower_green = np.array([25, 40, 40])
-    upper_green = np.array([90, 255, 255])
-    mask = cv2.inRange(hsv, lower_green, upper_green)
-
-    # マスクのクリーンアップ
-    kernel = np.ones((5, 5), np.uint8)
-    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
-    mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
+def segment_plant(img_rgb: np.ndarray) -> np.ndarray:
+    """
+    緑色植生をセグメント。255=植物のバイナリマスクを返す。
+    HSV閾値（OpenCV規約、8ビット）：
+      色相 : [25, 95]   （度/2）
+      彩度 : >= 20
+      明度 : >= 30
+    """
+    img_bgr = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2BGR)
+    hsv     = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2HSV)
+    mask    = cv2.inRange(hsv,
+                          np.array([25,  20,  30]),   # 下限
+                          np.array([95, 255, 255]))   # 上限
     return mask
 ```
 
+!!! warning "閾値の値が重要"
+    上記の閾値は論文（§3.3）と完全に一致します。このマニュアルの旧バージョンでは異なる値（[25,40,40]〜[90,255,255]）が示されていましたが、それは誤りです。上記の値を使用してください。
+
 ---
 
-## Step 2：スケール不変草丈の抽出
+## Step 3：スケール不変草丈の抽出
 
-草丈を画像高さの**比率**として計測します — これがスケール不変性の鍵です。
+第5〜第95パーセンタイル行を使用して草丈を画像高さの**比率**として計測します。
 
 ```python
-def extract_height_pixels(mask: np.ndarray) -> dict:
-    # 画像空間座標で植物草丈を抽出
-    # 草丈を画像高さの割合（0.0〜1.0）として返す
+def extract_traits(mask: np.ndarray) -> dict:
+    """
+    h_norm  = (r95 - r5) / H_R    （第5〜95パーセンタイル行スパン）
+    a_norm  = 緑ピクセル数 / (H_R * W_R)
+    どちらも [0, 1] の範囲でスケール不変。
+    """
+    H, W = mask.shape
     plant_rows = np.where(mask.any(axis=1))[0]
+
     if len(plant_rows) == 0:
-        return {"height_px": 0, "height_ratio": 0.0, "valid": False}
+        return {"h_norm": 0.0, "a_norm": 0.0, "valid": False}
 
-    top_px    = plant_rows.min()
-    bottom_px = plant_rows.max()
-    height_px = bottom_px - top_px
+    r5  = float(np.percentile(plant_rows, 5))
+    r95 = float(np.percentile(plant_rows, 95))
 
-    # 画像高さで正規化 → スケール不変
-    height_ratio = height_px / mask.shape[0]
+    h_norm = (r95 - r5) / H
+    a_norm = float(mask.sum()) / 255.0 / (H * W)
 
     return {
-        "height_px": int(height_px),
-        "height_ratio": float(height_ratio),
-        "valid": True
+        "h_norm":     round(h_norm, 4),
+        "a_norm":     round(a_norm, 4),
+        "height_px":  round(r95 - r5, 1),
+        "top_row_px": round(r5, 1),
+        "bot_row_px": round(r95, 1),
+        "valid":      True,
     }
 ```
 
-!!! info "なぜ画像高さで割るか？"
-    `height_ratio = height_px / image_height` により、COLMAPの任意スケール係数から独立した計測値になります。
+!!! info "なぜ最小/最大行でなく第5〜95パーセンタイルか？"
+    最小/最大行は孤立した緑ピクセル（迷い葉、反射など）に影響されます。第5〜95パーセンタイルは外れ値を無視しながら植物の垂直範囲を頑健に推定します。
 
 ---
 
-## Step 3：実行
+## Step 4：全22セッションで実行
+
+完全な再現性スクリプトは `analysis/compute_heights_rendered.py` です。全セッションをループし、ポーズ025からレンダリングして `analysis/heights_rendered.csv` に書き込みます。
 
 ```bash
-conda activate 3dgs
+conda activate gaussian_splatting
 
-python extract_traits.py \
-    --renders_dir output/train/ours_30000/renders \
-    --date 20260119 \
-    --output results/traits_20260119.csv
-```
-
----
-
-## Step 4：時系列成長解析
-
-```bash
-# 全日付で実行
-for DATE in 20260101 20260108 20260115; do
-    python extract_traits.py \
-        --renders_dir data/$DATE/output/train/ours_30000/renders \
-        --date $DATE \
-        --output results/traits_$DATE.csv
-done
-
-# 全日付を統合
-python -c "
-import pandas as pd, glob
-dfs = [pd.read_csv(f) for f in sorted(glob.glob('results/traits_*.csv'))]
-pd.concat(dfs).to_csv('results/all_traits.csv', index=False)
-"
+python analysis/compute_heights_rendered.py
+# オプション：一部のセッションのみ処理
+python analysis/compute_heights_rendered.py --dates 20260119 20260123
 ```
 
 ---
 
 ## 結果
 
-| 手法 | CV | 解釈 |
-|-----|--|---|
-| **本手法（画像空間）** | **9.7%** | ✅ 生物学的に意味のある変動 |
-| 従来手法（PLY） | 54.4% | ❌ スケールアーティファクトが支配的 |
+### 草丈CV比較
 
-!!! success "CV 9.7%の意味"
-    計測された変動は実際の生物学的変動を反映しており、計測誤差ではありません。複数日の3DGS再構成からのスケール不変形質抽出の**初の検証**です。
+| 手法 | CV | 比較 |
+|-----|--|------|
+| **提案手法（レンダー空間 h_norm）** | **9.8%** | — |
+| PLY直接草丈 | 28.0% | 2.86倍悪化 |
+| スケール補正PLY | 35.1% | 3.58倍悪化 |
+| 生フレームベースライン | 0.0% | *(自明 — 毎セッション同一画像)* |
 
----
-
-## 出力CSVフォーマット
-
-```csv
-date,image,height_px,height_ratio,top_px,bottom_px,valid
-20260119,frame_0001.jpg,1124,0.521,412,1536,True
-```
-
-| 列 | 説明 |
-|--|---|
-| `height_ratio` | **主要指標** — 草丈 / 画像高さ（スケール不変） |
-| `valid` | セグメンテーション成功フラグ |
+!!! success "CV 9.8%の意味"
+    レンダー空間h_normは22セッション間で9.8%変動します。3回の剪定イベントがそれぞれ15〜27パーセンタイルポイントの低下を引き起こし、背景変動を大きく上回ることから、本手法が計測ノイズではなく実際の生物学的変化を検出できることが確認されました。
 
 ---
 
 ## 次のステップ
 
 [→ 研究内容：独自の貢献](../my-research/contributions.md){ .md-button .md-button--primary }
+[→ 結果・検証](../my-research/results.md){ .md-button }

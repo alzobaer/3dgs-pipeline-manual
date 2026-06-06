@@ -81,10 +81,10 @@ ls output/test/ours_30000/
 <video controls width="100%" style="border-radius:8px; margin-bottom:1rem;">
   <source src="../../assets/videos/results/gt-vs-render.mp4" type="video/mp4">
 </video>
-*Ground truth (left) vs 3DGS rendered (right) — scrolling through 1,643 training views. At PSNR 23.80 dB, differences are barely visible.*
+*Ground truth (left) vs 3DGS rendered (right) — scrolling through 1,643 training views. At PSNR 23.71 dB, differences are barely visible.*
 
 ![Side-by-side comparison of ground truth frame vs 3DGS rendered frame of plant](../assets/images/screenshots/19-gt-vs-render.png){ width="100%" }
-*Static comparison: ground truth frame vs 3DGS render at PSNR 23.80 dB*
+*Static comparison: ground truth frame vs 3DGS render at PSNR 23.71 dB*
 
 === "Good Render ✅"
     - Sharp leaf edges
@@ -116,7 +116,7 @@ python metrics.py -m /path/to/date_20260119/output
 
 | Metric | Our Result | Minimum Acceptable |
 |--------|-----------|-------------------|
-| PSNR | 23.80 dB | > 20 dB |
+| PSNR | 23.71 dB | > 20 dB |
 | SSIM | 0.82 | > 0.75 |
 | LPIPS | 0.18 | < 0.30 |
 
