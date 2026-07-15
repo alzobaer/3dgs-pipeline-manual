@@ -2114,21 +2114,26 @@
 
 
 <h1 id="my-research-overview">My Research Overview<a class="headerlink" href="#my-research-overview" title="Permanent link">&para;</a></h1>
-<p>3D Gaussian Splatting for time-series plant phenotyping.</p>
+<p>3D Gaussian Splatting for time-series plant <strong>monitoring</strong> in greenhouses.</p>
+<div class="admonition note">
+<p class="admonition-title">Framing: monitoring, not absolute measurement</p>
+<p>This work is a <strong>relative growth-monitoring / change-detection</strong> system. It tracks how a plant changes over time and detects biologically meaningful events; it does <strong>not</strong> claim absolute, calibrated trait values. Consistency across sessions (coefficient of variation, CV) is therefore the primary and appropriate evaluation metric.</p>
+</div>
 <h2 id="research-focus">Research Focus<a class="headerlink" href="#research-focus" title="Permanent link">&para;</a></h2>
 <p>Developing a robust 3DGS pipeline for:
-- Time-series greenhouse monitoring
-- Scale-invariant trait extraction
-- Environmental correlation analysis</p>
+- Time-series greenhouse monitoring and change detection
+- Scale-invariant, render-space trait extraction
+- Detection of real crop-management events (e.g. pruning)</p>
 <h2 id="key-contributions">Key Contributions<a class="headerlink" href="#key-contributions" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>Scale-Invariant Height Extraction</strong> - 18.2pp (2.86×) improvement</li>
-<li><strong>Environmental Correlation Discovery</strong> - Humidity-PSNR relationship</li>
-<li><strong>Long-term Validation</strong> - 49 days, 22 dates, 100% success</li>
+<li><strong>Render-space, scale-invariant trait extraction</strong> — height CV 28.0% → 9.8% (2.86× more consistent)</li>
+<li><strong>Biological validation via pruning-event detection</strong> — three documented events detected (p = 0.0008)</li>
+<li><strong>Physical-reference corroboration</strong> — render-space height vs. an in-scene 45 cm pipe, r = 0.74</li>
+<li><strong>Long-term validation</strong> — 49 days, 22 sessions, 100% reconstruction success</li>
 </ol>
 <p>See <a href="../contributions/">Original Contributions</a> for details.</p>
 <h2 id="publications">Publications<a class="headerlink" href="#publications" title="Permanent link">&para;</a></h2>
-<p>In preparation for IEEE Transactions on Consumer Electronics (TCE).</p>
+<p>Journal paper under review at <em>Computers and Electronics in Agriculture</em> (Elsevier).</p>
 
 
 

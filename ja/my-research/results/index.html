@@ -1855,7 +1855,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        植物形質計測結果
+        植物形質モニタリング結果（セッション間の一貫性）
       
     </span>
   </a>
@@ -1866,7 +1866,18 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        検証結果
+        生物学的検証 — 剪定イベント検出
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45cm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        物理基準による検証 — 45cmパイプ
       
     </span>
   </a>
@@ -1877,7 +1888,29 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
+        検証結果
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         主要な知見
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations-and-future-ground-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        限界と今後のグラウンドトゥルース
       
     </span>
   </a>
@@ -2086,7 +2119,7 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        植物形質計測結果
+        植物形質モニタリング結果（セッション間の一貫性）
       
     </span>
   </a>
@@ -2097,7 +2130,18 @@
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        検証結果
+        生物学的検証 — 剪定イベント検出
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#45cm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        物理基準による検証 — 45cmパイプ
       
     </span>
   </a>
@@ -2108,7 +2152,29 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
+        検証結果
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         主要な知見
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations-and-future-ground-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        限界と今後のグラウンドトゥルース
       
     </span>
   </a>
@@ -2175,7 +2241,11 @@
 </tr>
 </tbody>
 </table>
-<h2 id="_2">植物形質計測結果<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_2">植物形質モニタリング結果（セッション間の一貫性）<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">CVが適切な指標である理由</p>
+<p>本研究は**モニタリング**システムであり、目的は経時的な相対変化の追跡であって、絶対的で較正された形質値の報告ではありません。したがって変動係数（CV、小さいほど一貫）が主要かつ適切な評価指標です。</p>
+</div>
 <table>
 <thead>
 <tr>
@@ -2206,8 +2276,68 @@
 </tr>
 </tbody>
 </table>
+<h2 id="_3">生物学的検証 — 剪定イベント検出<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>レンダー空間の信号が実際の生物学的変化を追跡している主要な証拠は、記録された栽培管理イベントを検出できることです。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>検出された剪定イベント</td>
+<td><strong>3 / 3</strong></td>
+</tr>
+<tr>
+<td>剪定時の平均低下</td>
+<td>≈ 正規化草丈で0.20（15〜27ポイント）</td>
+</tr>
+<tr>
+<td>有意性（剪定日 対 非剪定日）</td>
+<td><strong>p = 0.0008</strong></td>
+</tr>
+<tr>
+<td>背景変動</td>
+<td>9.8%（CV）— 低下はこれを大きく上回る</td>
+</tr>
+</tbody>
+</table>
+<h2 id="45cm">物理基準による検証 — 45cmパイプ<a class="headerlink" href="#45cm" title="Permanent link">&para;</a></h2>
+<p>レンダー空間草丈を、既知長45cmの場内ベンチパイプを基準に裏付けます。<code>h_gt =（植物ピクセル / パイプピクセル）× 45 cm</code>、全22セッションで注釈付け。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>相関（レンダー空間 対 パイプ基準）</td>
+<td><strong>r = 0.74</strong>、p &lt; 0.001</td>
+</tr>
+<tr>
+<td>R²</td>
+<td>0.55</td>
+</tr>
+<tr>
+<td>基準平均草丈</td>
+<td>159.9 cm</td>
+</tr>
+<tr>
+<td>ばらつき</td>
+<td>h_gt CV 8.9% 対 h_norm CV 9.6%</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">精度ではなく裏付け</p>
+<p>r = 0.74 は信号が**実スケールに基づいている**ことを示すものであり、絶対草丈の精度の主張ではありません。未説明分散の約45%は、パイプ基準自体のノイズ（セッション間のSfMスケール不定性）であり、パイプライン誤差ではありません。</p>
+</div>
 <hr />
-<h2 id="_3">検証結果<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_4">検証結果<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>撮影日数：</strong> 22日</li>
 <li><strong>期間：</strong> 49日間（2026年1月19日〜3月9日）</li>
@@ -2215,7 +2345,7 @@
 <li><strong>計算環境：</strong> DNN19、RTX 6000 Ada</li>
 </ul>
 <hr />
-<h2 id="_4">主要な知見<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_5">主要な知見<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>固定視点（条件1、5 fps）が全ての撮影条件を上回る：</p>
 <table>
 <thead>
@@ -2248,6 +2378,25 @@
 </tbody>
 </table>
 <p><strong>教訓：</strong> 撮影の一貫性 &gt; 手法の高度さ</p>
+<hr />
+<h2 id="limitations-and-future-ground-truth">限界と今後のグラウンドトゥルース<a class="headerlink" href="#limitations-and-future-ground-truth" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">誠実な限界</p>
+<ul>
+<li><strong>較正済みグラウンドトゥルース（RMSE）の欠如：</strong> これら22セッションにはメジャーによる実測草丈がないため、本システムは**一貫性（CV）**と**変化検出**について検証されており、絶対精度については検証されていません。45cmパイプの結果は較正ではなく裏付けです。</li>
+<li><strong>基準器具のノイズ：</strong> パイプ基準自体がSfMスケール不定性を持ちます（固定45cmに対し263〜420px）。これが r = 0.74 の一致における未説明分散の大部分を占めます。</li>
+<li><strong>作業者は剪定予定に対して盲検化されていません</strong>。イベントは作業記録から事後的に確認しました。</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">今後のグラウンドトゥルース取得手順（将来課題）</p>
+<p>3段階の手順により、評価を一貫性から絶対精度へ引き上げられます：</p>
+<ol>
+<li><strong>メジャー計測</strong>：各セッションでタグ付けした5〜10株を直接計測（RMSE）。</li>
+<li><strong>剛体較正バー</strong>：既知長の剛体を場内に設置 — 可動パイプの主要な分散要因を除去。</li>
+<li><strong>ArUcoマーカー</strong>：セッションごとの相似変換 → 絶対メートル単位。</li>
+</ol>
+</div>
 
 
 

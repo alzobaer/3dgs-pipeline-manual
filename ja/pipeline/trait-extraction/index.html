@@ -2258,7 +2258,11 @@
 
 
 <h1 id="stage-5">Stage 5：形質抽出<a class="headerlink" href="#stage-5" title="Permanent link">&para;</a></h1>
-<p>正準3DGSレンダリング画像からスケール不変な植物計測値を抽出します。</p>
+<p>正準3DGSレンダリング画像から、セッション間の**相対的な生育モニタリング**のためのスケール不変な植物形質信号を抽出します。</p>
+<div class="admonition note">
+<p class="admonition-title">計測ではなくモニタリング</p>
+<p>以下の形質（<code>h_norm</code>、<code>a_norm</code>）は、経時変化の追跡とイベント（例：剪定）の検出を目的とした**正規化・スケール不変**な量です。較正された絶対的な草丈・面積ではなく、セッション間の一貫性（CV）が重要な指標です。<a href="../../my-research/results/#limitations-and-future-ground-truth">結果・検証</a>を参照してください。</p>
+</div>
 <hr />
 <h2 id="_1">このステージの概要<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph LR
@@ -2271,7 +2275,7 @@
 <hr />
 <h2 id="_2">核心となる革新<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>従来のPLYベースの手法は三次元座標空間で計測しますが、COLMAPは各日付の再構成に**異なるスケール**を割り当てるため日付間の直接比較ができません。</p>
-<p>本手法の解決策：3DGSレンダラーでCOLMAPカメラポーズ025（5 fpsで撮影開始から約5.2秒）から**正準新視点画像**を合成し、画素空間で草丈を計測します。比率によりCOLMAPスケール係数が相殺されます。</p>
+<p>本手法の解決策：3DGSレンダラーで固定された正準ポーズ — 25番目の保留テストフレーム（テスト分割は8フレームごと）= <code>cameras.json[200]</code> = frame_00201、5 fpsで撮影開始から約40秒 — から**正準新視点画像**を合成し、画素空間で草丈を読み取ります。比率によりCOLMAPスケール係数が相殺されます。</p>
 <hr />
 <h2 id="step-1">Step 1：正準視点のレンダリング<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h2>
 <p>全22セッションで同一の物理視点となる**カメラポーズ025**から植物をレンダリングします。</p>
@@ -2282,7 +2286,7 @@
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># ネイティブ解像度でカメラポーズ025を読み込み</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;output/YYYYMMDD/gs_model/cameras.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">cam</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)[</span><span class="mi">25</span><span class="p">]</span>   <span class="c1"># 0インデックス：index 25 = COLMAPポーズ025</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">cam</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)[</span><span class="mi">200</span><span class="p">]</span>  <span class="c1"># 正準ポーズ = 25番目の保留テストフレーム = frame_00201（約40秒）</span>
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">W</span><span class="p">,</span> <span class="n">H</span> <span class="o">=</span> <span class="n">cam</span><span class="p">[</span><span class="s1">&#39;width&#39;</span><span class="p">],</span> <span class="n">cam</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span>
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cam</span><span class="p">[</span><span class="s1">&#39;rotation&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
@@ -2293,7 +2297,7 @@
 </span></code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">なぜポーズ025？</p>
-<p>カメラポーズ025はCOLMAPが推定した26番目のポーズ（0インデックス）です。5 fpsでframe_00026に対応し、撮影開始から約5.2秒 — 全セッションで幾何学的に同一の正面垂直視点です。</p>
+<p>正準ポーズは**25番目の保留テストフレーム**です（テスト分割は8フレームごとにCOLMAP登録フレームを保持）。全カメラの連続リストではこれは <code>cameras.json[200]</code> = frame_00201 に相当し、5 fpsで撮影開始から約40秒 — 一度固定して全22セッションで再利用する作物列の視点です。<code>test/ours_30000/renders/00025.png</code> としてレンダリングされるため「ポーズ025」と呼びます。</p>
 </div>
 <hr />
 <h2 id="step-2hsv">Step 2：植物セグメンテーション（HSV閾値処理）<a class="headerlink" href="#step-2hsv" title="Permanent link">&para;</a></h2>

@@ -1868,6 +1868,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#biological-validation-pruning-event-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Biological Validation — Pruning-Event Detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#physical-reference-corroboration-45-cm-pipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Physical-Reference Corroboration — 45 cm Pipe
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2327,6 +2349,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#biological-validation-pruning-event-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Biological Validation — Pruning-Event Detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#physical-reference-corroboration-45-cm-pipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Physical-Reference Corroboration — 45 cm Pipe
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2548,7 +2592,7 @@
 <p>Structure-from-Motion (SfM) reconstruction produces different coordinate scales for each capture date, making direct height comparison unreliable.</p>
 </div>
 <h3 id="my-solution">My Solution<a class="headerlink" href="#my-solution" title="Permanent link">&para;</a></h3>
-<p><strong>Innovation:</strong> Rendered image-based measurement in normalized image space.</p>
+<p><strong>Innovation:</strong> Rendered image-based trait extraction in normalized image space, used for <strong>relative growth monitoring</strong> rather than absolute measurement.</p>
 <pre class="mermaid"><code>graph TD
     A[3DGS Model] --&gt; B[Render Top View]
     B --&gt; C[Normalize by Image Dimensions]
@@ -2572,8 +2616,40 @@
 <li><strong>Method:</strong> Image-space normalization</li>
 <li><strong>Result:</strong> 18.2pp CV improvement (2.86×)</li>
 <li><strong>Validation:</strong> 22 dates, 49 days</li>
-<li><strong>Impact:</strong> Enables reliable time-series phenotyping</li>
+<li><strong>Impact:</strong> Enables reliable time-series growth <strong>monitoring</strong> (relative change, not absolute trait values)</li>
 </ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Calibration is the wrong fix</p>
+<p>Applying a per-session scale factor to the direct-3D height makes it <strong>worse</strong>, not better (CV 35.1% vs 28.0%): the estimated scale factor is itself noisy and injects its own variance. This is what motivates measuring in the render, where the scale cancels by construction.</p>
+</div>
+<h3 id="biological-validation-pruning-event-detection">Biological Validation — Pruning-Event Detection<a class="headerlink" href="#biological-validation-pruning-event-detection" title="Permanent link">&para;</a></h3>
+<p>The strongest evidence that the render-space signal tracks <em>real biology</em> (not just numerical stability) is that it detects documented crop-management events.</p>
+<p><img alt="Pruning events aligned with trait drops" src="../../assets/images/figures/growth_curve_v2.png" width="100%" />
+<em>Render-space height over 49 days: smooth regrowth punctuated by three sharp drops, each aligned with a documented pruning event.</em></p>
+<div class="admonition success">
+<p class="admonition-title">Biological validation</p>
+<p><strong>Three documented pruning events are each detected as a sharp drop</strong> in render-space height (mean drop ≈ 0.20 in normalized height, 15–27 percentage points — well above the 9.8% background variation).</p>
+<ul>
+<li><strong>Significance:</strong> p = 0.0008 (drops at pruning dates vs. non-pruning dates)</li>
+<li><strong>Meaning:</strong> the pipeline responds to real management events, so it is a usable <strong>monitoring / change-detection</strong> signal.</li>
+</ul>
+</div>
+<h3 id="physical-reference-corroboration-45-cm-pipe">Physical-Reference Corroboration — 45 cm Pipe<a class="headerlink" href="#physical-reference-corroboration-45-cm-pipe" title="Permanent link">&para;</a></h3>
+<p>To ground the render-space height against something physical, an in-scene bench pipe of known length (45 cm) is used as a ruler that is co-visible with the plant.</p>
+<p>Reference height: <strong>h_gt = (plant_px / pipe_px) × 45 cm</strong>, annotated in all 22 sessions.</p>
+<div class="admonition success">
+<p class="admonition-title">Physical-reference agreement</p>
+<p>Render-space height correlates with the pipe-ratio reference across all 22 sessions:</p>
+<ul>
+<li><strong>Pearson r = 0.74</strong> (p &lt; 0.001), R² = 0.55</li>
+<li>Reference mean height 159.9 cm; comparable spread (h_gt CV 8.9% vs. h_norm CV 9.6%)</li>
+<li>The pipe spans 263–420 px for a fixed 45 cm, so the ~45% unexplained variance is <strong>noise in the reference instrument</strong> (SfM scale ambiguity), not pipeline error.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Honest scope</p>
+<p>This is <strong>corroboration</strong> that the signal is grounded in reality — <strong>not</strong> proof of absolute accuracy. No calibrated tape-measure ground truth (RMSE) was collected for these sessions; see <a href="../results/#limitations-and-future-ground-truth">Results &amp; Validation</a> for the limitation and the planned ground-truth protocol.</p>
 </div>
 <hr />
 <h2 id="2-environmental-correlation-analysis">2. Environmental Correlation Analysis<a class="headerlink" href="#2-environmental-correlation-analysis" title="Permanent link">&para;</a></h2>
@@ -2658,10 +2734,22 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>Scale-Invariant Measurement</strong></td>
+<td><strong>Scale-invariant render-space monitoring</strong></td>
 <td>Image-space normalization</td>
 <td>18.2pp CV improvement (2.86×)</td>
 <td>22 dates, 49 days</td>
+</tr>
+<tr>
+<td><strong>Pruning-event detection</strong></td>
+<td>Change detection from render-space traits</td>
+<td>Biological validation</td>
+<td>3 events, p = 0.0008</td>
+</tr>
+<tr>
+<td><strong>Physical-reference corroboration</strong></td>
+<td>In-scene 45 cm pipe ratio</td>
+<td>Grounded in real-world scale</td>
+<td>r = 0.74, p &lt; 0.001</td>
 </tr>
 <tr>
 <td><strong>Environmental Correlation</strong></td>
@@ -2699,9 +2787,9 @@ In progress</p>
 <p>Target submission: September 2026</p>
 </div>
 <div class="tabbed-block">
-<p>📄 <strong>IEEE Transactions on Consumer Electronics</strong><br />
-In preparation</p>
-<p>Target submission: Q3 2026</p>
+<p>📄 <strong>Computers and Electronics in Agriculture</strong> (Elsevier)<br />
+Under review</p>
+<p>Scale-invariant 3DGS for time-series greenhouse plant monitoring</p>
 </div>
 </div>
 </div>

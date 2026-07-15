@@ -2280,7 +2280,11 @@
 
 
 <h1 id="stage-5-trait-extraction">Stage 5: Trait Extraction<a class="headerlink" href="#stage-5-trait-extraction" title="Permanent link">&para;</a></h1>
-<p>Extract scale-invariant plant measurements from the canonical 3DGS render.</p>
+<p>Extract scale-invariant plant trait signals from the canonical 3DGS render, for <strong>relative growth monitoring</strong> across sessions.</p>
+<div class="admonition note">
+<p class="admonition-title">Monitoring, not absolute measurement</p>
+<p>The traits below (<code>h_norm</code>, <code>a_norm</code>) are <strong>normalized, scale-invariant</strong> quantities intended to track <em>change over time</em> and detect events (e.g. pruning). They are not calibrated absolute heights/areas — consistency across sessions (CV) is the metric that matters. See <a href="../../my-research/results/#limitations-and-future-ground-truth">Results &amp; Validation</a>.</p>
+</div>
 <hr />
 <h2 id="what-this-stage-does">What This Stage Does<a class="headerlink" href="#what-this-stage-does" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph LR
@@ -2295,7 +2299,7 @@
 <p>Traditional PLY-based methods measure directly in 3D coordinate space — but COLMAP assigns <strong>different scales</strong> to each date's reconstruction. This makes direct comparison across dates unreliable.</p>
 <p><img alt="Diagram showing scale shift problem in PLY coordinates vs consistency in image space" src="../../assets/images/figures/ply_vs_rendered_comparison_v2.png" width="100%" />
 <em>Scale inconsistency: PLY-based height (left) shows erratic shifts between dates. Our image-space method (right) is stable across all 22 dates.</em></p>
-<p>Our solution: synthesise a <strong>canonical novel-view image</strong> from COLMAP camera pose 025 (≈5.2 s into the walk at 5 fps) using the 3DGS renderer, then measure plant height in pixel space. The ratio cancels any COLMAP scale factor.</p>
+<p>Our solution: synthesise a <strong>canonical novel-view image</strong> at the fixed canonical pose — the 25<sup>th</sup> held-out test frame (the test split keeps every 8<sup>th</sup> frame) = <code>cameras.json[200]</code> = frame_00201, ≈40 s into the walk at 5 fps — using the 3DGS renderer, then read plant height in pixel space. The ratio cancels any COLMAP scale factor.</p>
 <hr />
 <h2 id="step-1-render-the-canonical-view">Step 1: Render the Canonical View<a class="headerlink" href="#step-1-render-the-canonical-view" title="Permanent link">&para;</a></h2>
 <p>Use the 3DGS renderer to synthesise the plant from <strong>camera pose 025</strong> — the same physical viewpoint across all 22 sessions.</p>
@@ -2307,7 +2311,7 @@
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Load camera pose 025 at native resolution</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;output/YYYYMMDD/gs_model/cameras.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">cam</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)[</span><span class="mi">25</span><span class="p">]</span>   <span class="c1"># 0-indexed: index 25 = COLMAP pose 025</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">cam</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)[</span><span class="mi">200</span><span class="p">]</span>  <span class="c1"># canonical pose = 25th held-out test frame = frame_00201 (~40 s)</span>
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">W</span><span class="p">,</span> <span class="n">H</span> <span class="o">=</span> <span class="n">cam</span><span class="p">[</span><span class="s1">&#39;width&#39;</span><span class="p">],</span> <span class="n">cam</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span>
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cam</span><span class="p">[</span><span class="s1">&#39;rotation&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
@@ -2318,7 +2322,7 @@
 </span></code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Why pose 025?</p>
-<p>Camera pose 025 is the 26<sup>th</sup> COLMAP-estimated pose (0-indexed). At 5 fps it corresponds to frame_00026, which is ≈5.2 s into the walk — a front-perpendicular view of the crop lane that is geometrically identical across all sessions.</p>
+<p>The canonical pose is the <strong>25<sup>th</sup> held-out test frame</strong> (the test split keeps every 8<sup>th</sup> COLMAP-registered frame). In the full sequential camera list this is <code>cameras.json[200]</code> = frame_00201, ≈40 s into the walk at 5 fps — a view of the crop lane that is fixed once and reused for all 22 sessions. It is rendered as <code>test/ours_30000/renders/00025.png</code>, which is why it is labelled "pose 025".</p>
 </div>
 <hr />
 <h2 id="step-2-plant-segmentation-hsv-thresholding">Step 2: Plant Segmentation (HSV Thresholding)<a class="headerlink" href="#step-2-plant-segmentation-hsv-thresholding" title="Permanent link">&para;</a></h2>
@@ -2394,7 +2398,7 @@
 </span></code></pre></div>
 <p>Expected output:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Processing 22 sessions → analysis/heights_rendered.csv
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Camera: COLMAP index 25  |  Iteration: 30000
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Camera: COLMAP index 200  |  Iteration: 30000
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>HSV thresholds: H∈[25,95], S≥20, V≥30
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>  20260119  rendering ...  h_norm=0.8990  green_coverage=0.9312  [ok]

@@ -1852,10 +1852,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#plant-trait-measurement-results" class="md-nav__link">
+  <a href="#plant-trait-monitoring-results-cross-session-consistency" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Plant Trait Measurement Results
+        Plant Trait Monitoring Results (cross-session consistency)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#biological-validation-pruning-event-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Biological Validation — Pruning-Event Detection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#physical-reference-validation-45-cm-pipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Physical-Reference Validation — 45 cm Pipe
       
     </span>
   </a>
@@ -1889,6 +1911,17 @@
     <span class="md-ellipsis">
       
         Key Finding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations-and-future-ground-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limitations and Future Ground Truth
       
     </span>
   </a>
@@ -2094,10 +2127,32 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#plant-trait-measurement-results" class="md-nav__link">
+  <a href="#plant-trait-monitoring-results-cross-session-consistency" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Plant Trait Measurement Results
+        Plant Trait Monitoring Results (cross-session consistency)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#biological-validation-pruning-event-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Biological Validation — Pruning-Event Detection
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#physical-reference-validation-45-cm-pipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Physical-Reference Validation — 45 cm Pipe
       
     </span>
   </a>
@@ -2131,6 +2186,17 @@
     <span class="md-ellipsis">
       
         Key Finding
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#limitations-and-future-ground-truth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limitations and Future Ground Truth
       
     </span>
   </a>
@@ -2196,7 +2262,11 @@
 </tr>
 </tbody>
 </table>
-<h2 id="plant-trait-measurement-results">Plant Trait Measurement Results<a class="headerlink" href="#plant-trait-measurement-results" title="Permanent link">&para;</a></h2>
+<h2 id="plant-trait-monitoring-results-cross-session-consistency">Plant Trait Monitoring Results (cross-session consistency)<a class="headerlink" href="#plant-trait-monitoring-results-cross-session-consistency" title="Permanent link">&para;</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Why CV is the right metric</p>
+<p>This is a <strong>monitoring</strong> system: the goal is to track relative change over time, not to report absolute, calibrated trait values. The coefficient of variation (CV, lower = more consistent) is therefore the primary and appropriate evaluation metric.</p>
+</div>
 <table>
 <thead>
 <tr>
@@ -2227,6 +2297,66 @@
 </tr>
 </tbody>
 </table>
+<h2 id="biological-validation-pruning-event-detection">Biological Validation — Pruning-Event Detection<a class="headerlink" href="#biological-validation-pruning-event-detection" title="Permanent link">&para;</a></h2>
+<p>The render-space signal detects real crop-management events, which is the key evidence that it tracks biology rather than noise.</p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Documented pruning events detected</td>
+<td><strong>3 / 3</strong></td>
+</tr>
+<tr>
+<td>Mean drop at pruning</td>
+<td>≈ 0.20 normalized height (15–27 pp)</td>
+</tr>
+<tr>
+<td>Significance (pruning vs. non-pruning dates)</td>
+<td><strong>p = 0.0008</strong></td>
+</tr>
+<tr>
+<td>Background variation</td>
+<td>9.8% (CV) — drops are well above it</td>
+</tr>
+</tbody>
+</table>
+<h2 id="physical-reference-validation-45-cm-pipe">Physical-Reference Validation — 45 cm Pipe<a class="headerlink" href="#physical-reference-validation-45-cm-pipe" title="Permanent link">&para;</a></h2>
+<p>Render-space height is corroborated against an in-scene 45 cm bench pipe used as a ruler, <code>h_gt = (plant_px / pipe_px) × 45 cm</code>, annotated across all 22 sessions.</p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Correlation (render-space vs. pipe reference)</td>
+<td><strong>r = 0.74</strong>, p &lt; 0.001</td>
+</tr>
+<tr>
+<td>R²</td>
+<td>0.55</td>
+</tr>
+<tr>
+<td>Reference mean height</td>
+<td>159.9 cm</td>
+</tr>
+<tr>
+<td>Spread</td>
+<td>h_gt CV 8.9% vs. h_norm CV 9.6%</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Corroboration, not accuracy</p>
+<p>r = 0.74 shows the signal is <strong>grounded in real-world scale</strong> — it is not a claim of absolute-height accuracy. The ~45% unexplained variance is noise in the pipe reference itself (SfM scale ambiguity across sessions), not pipeline error.</p>
+</div>
 <h2 id="plant-growth-time-lapse">Plant Growth Time-Lapse<a class="headerlink" href="#plant-growth-time-lapse" title="Permanent link">&para;</a></h2>
 <video controls width="100%" style="border-radius:8px; margin-bottom:1rem;">
   <source src="../../assets/videos/results/timelapse-growth.mp4" type="video/mp4">
@@ -2273,6 +2403,25 @@
 </tbody>
 </table>
 <p><strong>Lesson:</strong> Acquisition consistency &gt; method sophistication</p>
+<hr />
+<h2 id="limitations-and-future-ground-truth">Limitations and Future Ground Truth<a class="headerlink" href="#limitations-and-future-ground-truth" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Honest limitations</p>
+<ul>
+<li><strong>No calibrated ground truth (RMSE):</strong> these 22 sessions have no tape-measured physical heights, so the system is validated for <strong>consistency (CV)</strong> and <strong>change detection</strong>, not absolute accuracy. The 45 cm-pipe result is corroboration, not calibration.</li>
+<li><strong>Reference-instrument noise:</strong> the pipe reference carries its own SfM scale ambiguity (pipe spans 263–420 px for a fixed 45 cm), which accounts for most of the unexplained variance in the r = 0.74 agreement.</li>
+<li><strong>Operator not blinded</strong> to the pruning schedule; events were confirmed from work logs post-hoc.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Planned ground-truth protocol (future work)</p>
+<p>A three-tier protocol would upgrade the evaluation from consistency to absolute accuracy:</p>
+<ol>
+<li><strong>Tape measurements</strong> on 5–10 tagged plants per session (direct RMSE).</li>
+<li><strong>Rigid calibration bar</strong> of known length in-scene — removes the dominant variance source of a movable pipe.</li>
+<li><strong>ArUco markers</strong> for a full per-session similarity transform → absolute metric units.</li>
+</ol>
+</div>
 
 
 

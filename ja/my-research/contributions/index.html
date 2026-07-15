@@ -1846,6 +1846,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        生物学的検証 — 剪定イベント検出
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45cm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        物理基準による裏付け — 45cmパイプ
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1885,7 +1907,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         貢献のまとめ
@@ -2144,6 +2166,28 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        生物学的検証 — 剪定イベント検出
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45cm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        物理基準による裏付け — 45cmパイプ
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2183,7 +2227,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         貢献のまとめ
@@ -2223,7 +2267,7 @@
 <p>Structure-from-Motion（SfM）再構成は各撮影日に異なる座標スケールを生成するため、直接の草丈比較が不可能になります。</p>
 </div>
 <h3 id="_3">提案手法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p><strong>革新点：</strong> 正規化画像空間でのレンダリング画像ベース計測。</p>
+<p><strong>革新点：</strong> 正規化画像空間でのレンダリング画像ベース形質抽出。絶対計測ではなく**相対的な生育モニタリング**に用います。</p>
 <pre class="mermaid"><code>graph TD
     A[3DGSモデル] --&gt; B[固定視点からレンダリング]
     B --&gt; C[画像寸法で正規化]
@@ -2237,7 +2281,38 @@
 <li><strong>手法：</strong> 画像空間正規化</li>
 <li><strong>結果：</strong> CV 18.2ポイント（2.86倍）改善（28.0% → 9.8%）</li>
 <li><strong>検証：</strong> 22日分、49日間</li>
+<li><strong>意義：</strong> 信頼できる時系列生育**モニタリング**を実現（絶対値ではなく相対変化）</li>
 </ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">較正は誤った対処</p>
+<p>直接3D草丈にセッションごとのスケール係数を掛けると、かえって悪化します（CV 35.1% 対 28.0%）。推定スケール係数自体がノイズを持ち、独自の分散を持ち込むためです。これがレンダー空間で計測する動機です（レンダー空間ではスケールが原理的に相殺されます）。</p>
+</div>
+<h3 id="_4">生物学的検証 — 剪定イベント検出<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>レンダー空間の信号が単なる数値的安定性ではなく*実際の生物学的変化*を追跡している最も強い証拠は、記録された栽培管理イベントを検出できることです。</p>
+<div class="admonition success">
+<p class="admonition-title">生物学的検証</p>
+<p><strong>記録された3件の剪定イベントが、いずれも草丈の急な低下として検出されました</strong>（平均低下 ≈ 正規化草丈で0.20、15〜27ポイント。背景変動9.8%を大きく上回る）。</p>
+<ul>
+<li><strong>有意性：</strong> p = 0.0008（剪定日 対 非剪定日）</li>
+<li><strong>意味：</strong> 実際の管理イベントに反応するため、**モニタリング／変化検出**の信号として有用です。</li>
+</ul>
+</div>
+<h3 id="45cm">物理基準による裏付け — 45cmパイプ<a class="headerlink" href="#45cm" title="Permanent link">&para;</a></h3>
+<p>レンダー空間の草丈を物理的に基準づけるため、既知長（45cm）の場内ベンチパイプを、植物と同時に写る「ものさし」として用います。</p>
+<p>基準草丈：<strong>h_gt =（植物ピクセル / パイプピクセル）× 45 cm</strong>、全22セッションで注釈付け。</p>
+<div class="admonition success">
+<p class="admonition-title">物理基準との一致</p>
+<p>レンダー空間草丈は、全22セッションでパイプ比基準と相関します：</p>
+<ul>
+<li><strong>ピアソン r = 0.74</strong>（p &lt; 0.001）、R² = 0.55</li>
+<li>基準平均草丈 159.9 cm、同程度のばらつき（h_gt CV 8.9% 対 h_norm CV 9.6%）</li>
+<li>パイプは固定45cmに対し263〜420pxに広がるため、未説明分散の約45%は**基準器具側のノイズ**（セッション間のSfMスケール不定性）であり、パイプライン誤差ではありません。</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">誠実なスコープ</p>
+<p>r = 0.74 は信号が実スケールに**基づいている**ことの裏付けであり、<strong>絶対精度の証明ではありません</strong>。これらのセッションでは較正済みメジャーによるグラウンドトゥルース（RMSE）は取得していません。限界と今後の取得手順は<a href="../results/#limitations-and-future-ground-truth">結果と検証</a>を参照してください。</p>
 </div>
 <hr />
 <h2 id="2">2. 環境相関解析<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
@@ -2274,7 +2349,7 @@
 <h2 id="4">4. 完全なパイプライン統合<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <p>3DGSとIoTセンサーを統合したシステムアーキテクチャを構築しました。</p>
 <hr />
-<h2 id="_4">貢献のまとめ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_5">貢献のまとめ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2286,10 +2361,22 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>スケール不変計測</strong></td>
+<td><strong>スケール不変レンダー空間モニタリング</strong></td>
 <td>画像空間正規化</td>
 <td>CV 18.2ポイント（2.86倍）改善</td>
 <td>22日分、49日間</td>
+</tr>
+<tr>
+<td><strong>剪定イベント検出</strong></td>
+<td>レンダー空間形質からの変化検出</td>
+<td>生物学的検証</td>
+<td>3件、p = 0.0008</td>
+</tr>
+<tr>
+<td><strong>物理基準による裏付け</strong></td>
+<td>場内45cmパイプ比</td>
+<td>実スケールとの整合</td>
+<td>r = 0.74, p &lt; 0.001</td>
 </tr>
 <tr>
 <td><strong>環境相関</strong></td>

@@ -1810,7 +1810,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        発表予定
+        発表論文
       
     </span>
   </a>
@@ -2086,7 +2086,7 @@
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        発表予定
+        発表論文
       
     </span>
   </a>
@@ -2114,26 +2114,31 @@
 
 
 <h1 id="_1">研究概要<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<p>時系列植物フェノタイピングのための3D Gaussian Splatting。</p>
+<p>温室における時系列植物**モニタリング**のための3D Gaussian Splatting。</p>
+<div class="admonition note">
+<p class="admonition-title">位置づけ：絶対計測ではなくモニタリング</p>
+<p>本研究は**相対的な生育モニタリング／変化検出**システムです。植物の経時変化を追跡し、生物学的に意味のあるイベントを検出しますが、絶対的で較正された形質値を主張するものではありません。したがってセッション間の一貫性（変動係数 CV）が主要かつ適切な評価指標です。</p>
+</div>
 <hr />
 <h2 id="_2">研究の焦点<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>以下を目的とした堅牢な3DGSパイプラインの開発：</p>
 <ul>
-<li>温室の時系列モニタリング</li>
-<li>スケール不変な形質抽出</li>
-<li>環境相関解析</li>
+<li>温室の時系列モニタリング・変化検出</li>
+<li>スケール不変なレンダー空間形質抽出</li>
+<li>実際の栽培管理イベント（例：剪定）の検出</li>
 </ul>
 <hr />
 <h2 id="_3">主な貢献<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>スケール不変草丈抽出</strong> — CV 18.2ポイント（2.86倍）改善（28.0% → 9.8%）</li>
-<li><strong>環境相関の発見</strong> — 湿度とPSNRの有意な相関（r=+0.506, p=0.032）</li>
-<li><strong>長期検証</strong> — 49日間、22日分、成功率100%</li>
+<li><strong>レンダー空間でのスケール不変形質抽出</strong> — 草丈CV 28.0% → 9.8%（2.86倍の一貫性向上）</li>
+<li><strong>剪定イベント検出による生物学的検証</strong> — 記録された3件のイベントを検出（p = 0.0008）</li>
+<li><strong>物理基準による裏付け</strong> — レンダー空間草丈と場内の45cmパイプの相関 r = 0.74</li>
+<li><strong>長期検証</strong> — 49日間、22セッション、再構成成功率100%</li>
 </ol>
 <p>詳細は<a href="../contributions/">独自の貢献</a>を参照してください。</p>
 <hr />
-<h2 id="_4">発表予定<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p><em>Computers and Electronics in Agriculture</em>（Elsevier）へ投稿準備中。</p>
+<h2 id="_4">発表論文<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p><em>Computers and Electronics in Agriculture</em>（Elsevier）にて査読中。</p>
 
 
 

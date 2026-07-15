@@ -1,8 +1,9 @@
 """
 compute_heights_rendered.py — generate heights_rendered.csv from 3DGS models
 =============================================================================
-Renders each session from COLMAP camera pose 025 (the canonical front view,
-≈5.2 s into the walk at 5 fps) and extracts two scale-invariant traits:
+Renders each session from the canonical pose — the 25th held-out test frame
+(the test split keeps every 8th COLMAP frame) = cameras.json[200] = frame_00201,
+≈40 s into the walk at 5 fps — and extracts two scale-invariant traits:
 
   h_norm        = (r95 − r5) / H_R
   green_coverage = mask_pixel_count / (H_R × W_R)
@@ -33,9 +34,9 @@ from gaussian_renderer import render, GaussianModel
 from utils.graphics_utils import getWorld2View2, getProjectionMatrix
 
 # ── constants ──────────────────────────────────────────────────────────────────
-OUTPUT_ROOT = Path('/media/HDD-24TB/3DGS_TimeSeries/output')
+OUTPUT_ROOT = Path('/media/HDD-24TB/Zobaer_Research_Lab/3DGS_TimeSeries/output')
 ITERATION   = 30000
-CAM_IDX     = 25   # COLMAP camera index 025  (0-indexed)
+CAM_IDX     = 200  # canonical pose = 25th held-out test frame = cameras.json[200] = frame_00201 (~40 s)
 
 H_LOW, H_HIGH = 25, 95   # hue bounds (OpenCV 0-179)
 S_LOW, V_LOW  =  20, 30  # saturation / value minimums
