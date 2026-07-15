@@ -1,6 +1,9 @@
 # Stage 5: Trait Extraction
 
-Extract scale-invariant plant measurements from the canonical 3DGS render.
+Extract scale-invariant plant trait signals from the canonical 3DGS render, for **relative growth monitoring** across sessions.
+
+!!! note "Monitoring, not absolute measurement"
+    The traits below (`h_norm`, `a_norm`) are **normalized, scale-invariant** quantities intended to track *change over time* and detect events (e.g. pruning). They are not calibrated absolute heights/areas — consistency across sessions (CV) is the metric that matters. See [Results & Validation](../my-research/results.md#limitations-and-future-ground-truth).
 
 ---
 
@@ -26,7 +29,7 @@ Traditional PLY-based methods measure directly in 3D coordinate space — but CO
 ![Diagram showing scale shift problem in PLY coordinates vs consistency in image space](../assets/images/figures/ply_vs_rendered_comparison_v2.png){ width="100%" }
 *Scale inconsistency: PLY-based height (left) shows erratic shifts between dates. Our image-space method (right) is stable across all 22 dates.*
 
-Our solution: synthesise a **canonical novel-view image** from COLMAP camera pose 025 (≈5.2 s into the walk at 5 fps) using the 3DGS renderer, then measure plant height in pixel space. The ratio cancels any COLMAP scale factor.
+Our solution: synthesise a **canonical novel-view image** at the fixed canonical pose — the 25th held-out test frame (the test split keeps every 8th frame) = `cameras.json[200]` = frame_00201, ≈40 s into the walk at 5 fps — using the 3DGS renderer, then read plant height in pixel space. The ratio cancels any COLMAP scale factor.
 
 ---
 
@@ -43,7 +46,7 @@ from utils.graphics_utils import getWorld2View2, getProjectionMatrix
 
 # Load camera pose 025 at native resolution
 with open('output/YYYYMMDD/gs_model/cameras.json') as f:
-    cam = json.load(f)[25]   # 0-indexed: index 25 = COLMAP pose 025
+    cam = json.load(f)[200]  # canonical pose = 25th held-out test frame = frame_00201 (~40 s)
 
 W, H = cam['width'], cam['height']
 R = np.array(cam['rotation'], dtype=np.float64)
@@ -54,7 +57,7 @@ FoVy = 2 * np.arctan(H / (2 * cam['fy']))
 ```
 
 !!! info "Why pose 025?"
-    Camera pose 025 is the 26th COLMAP-estimated pose (0-indexed). At 5 fps it corresponds to frame_00026, which is ≈5.2 s into the walk — a front-perpendicular view of the crop lane that is geometrically identical across all sessions.
+    The canonical pose is the **25th held-out test frame** (the test split keeps every 8th COLMAP-registered frame). In the full sequential camera list this is `cameras.json[200]` = frame_00201, ≈40 s into the walk at 5 fps — a view of the crop lane that is fixed once and reused for all 22 sessions. It is rendered as `test/ours_30000/renders/00025.png`, which is why it is labelled "pose 025".
 
 ---
 
@@ -145,7 +148,7 @@ Expected output:
 
 ```
 Processing 22 sessions → analysis/heights_rendered.csv
-Camera: COLMAP index 25  |  Iteration: 30000
+Camera: COLMAP index 200  |  Iteration: 30000
 HSV thresholds: H∈[25,95], S≥20, V≥30
 
   20260119  rendering ...  h_norm=0.8990  green_coverage=0.9312  [ok]

@@ -33,11 +33,10 @@ Research outputs from the 3DGS time-series plant phenotyping project.
 
 | Field | Detail |
 |-------|--------|
-| **Status** | 🔄 In preparation |
-| **Target submission** | Last week of May 2026 |
+| **Status** | 🔄 Under review |
 | **Journal** | *Computers and Electronics in Agriculture* (Elsevier) |
-| **Authors** | Al Zobaer, Hiroshi Mineno |
-| **Topic** | Scale-invariant 3D Gaussian Splatting for time-series greenhouse plant phenotyping |
+| **Authors** | Al Zobaer, Makoto Koike, Yuichiro Nomura, Hiroshi Mineno |
+| **Topic** | Scale-invariant 3D Gaussian Splatting for time-series greenhouse plant **monitoring** |
 
 ---
 

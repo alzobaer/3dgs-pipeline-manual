@@ -18,7 +18,7 @@ Traditional PLY-based height measurement suffers from **temporal scale inconsist
 
 ### My Solution
 
-**Innovation:** Rendered image-based measurement in normalized image space.
+**Innovation:** Rendered image-based trait extraction in normalized image space, used for **relative growth monitoring** rather than absolute measurement.
 
 ```mermaid
 graph TD
@@ -49,7 +49,39 @@ graph TD
     - **Method:** Image-space normalization
     - **Result:** 18.2pp CV improvement (2.86×)
     - **Validation:** 22 dates, 49 days
-    - **Impact:** Enables reliable time-series phenotyping
+    - **Impact:** Enables reliable time-series growth **monitoring** (relative change, not absolute trait values)
+
+!!! warning "Calibration is the wrong fix"
+    Applying a per-session scale factor to the direct-3D height makes it **worse**, not better (CV 35.1% vs 28.0%): the estimated scale factor is itself noisy and injects its own variance. This is what motivates measuring in the render, where the scale cancels by construction.
+
+### Biological Validation — Pruning-Event Detection
+
+The strongest evidence that the render-space signal tracks *real biology* (not just numerical stability) is that it detects documented crop-management events.
+
+![Pruning events aligned with trait drops](../assets/images/figures/growth_curve_v2.png){ width="100%" }
+*Render-space height over 49 days: smooth regrowth punctuated by three sharp drops, each aligned with a documented pruning event.*
+
+!!! success "Biological validation"
+    **Three documented pruning events are each detected as a sharp drop** in render-space height (mean drop ≈ 0.20 in normalized height, 15–27 percentage points — well above the 9.8% background variation).
+
+    - **Significance:** p = 0.0008 (drops at pruning dates vs. non-pruning dates)
+    - **Meaning:** the pipeline responds to real management events, so it is a usable **monitoring / change-detection** signal.
+
+### Physical-Reference Corroboration — 45 cm Pipe
+
+To ground the render-space height against something physical, an in-scene bench pipe of known length (45 cm) is used as a ruler that is co-visible with the plant.
+
+Reference height: **h_gt = (plant_px / pipe_px) × 45 cm**, annotated in all 22 sessions.
+
+!!! success "Physical-reference agreement"
+    Render-space height correlates with the pipe-ratio reference across all 22 sessions:
+
+    - **Pearson r = 0.74** (p < 0.001), R² = 0.55
+    - Reference mean height 159.9 cm; comparable spread (h_gt CV 8.9% vs. h_norm CV 9.6%)
+    - The pipe spans 263–420 px for a fixed 45 cm, so the ~45% unexplained variance is **noise in the reference instrument** (SfM scale ambiguity), not pipeline error.
+
+!!! note "Honest scope"
+    This is **corroboration** that the signal is grounded in reality — **not** proof of absolute accuracy. No calibrated tape-measure ground truth (RMSE) was collected for these sessions; see [Results & Validation](results.md#limitations-and-future-ground-truth) for the limitation and the planned ground-truth protocol.
 
 ---
 
@@ -148,7 +180,9 @@ I integrated IoT sensors measuring:
 
 | Contribution | Innovation | Impact | Validation |
 |--------------|-----------|---------|-----------|
-| **Scale-Invariant Measurement** | Image-space normalization | 18.2pp CV improvement (2.86×) | 22 dates, 49 days |
+| **Scale-invariant render-space monitoring** | Image-space normalization | 18.2pp CV improvement (2.86×) | 22 dates, 49 days |
+| **Pruning-event detection** | Change detection from render-space traits | Biological validation | 3 events, p = 0.0008 |
+| **Physical-reference corroboration** | In-scene 45 cm pipe ratio | Grounded in real-world scale | r = 0.74, p < 0.001 |
 | **Environmental Correlation** | Humidity-PSNR relationship | First identification | r=+0.506*, p=0.032 |
 | **Radiation Classification** | Data-driven 100 W/m² threshold | WMO-validated method | Perfect balance n=9:9 |
 | **Long-term Validation** | 49-day continuous monitoring | Temporal consistency | CV = 3.5% |
@@ -175,10 +209,10 @@ My research is documented in:
 
 === "Journal Paper"
 
-    📄 **IEEE Transactions on Consumer Electronics**  
-    In preparation
+    📄 **Computers and Electronics in Agriculture** (Elsevier)  
+    Under review
     
-    Target submission: Q3 2026
+    Scale-invariant 3DGS for time-series greenhouse plant monitoring
 
 ---
 

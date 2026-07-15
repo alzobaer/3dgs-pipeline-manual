@@ -33,11 +33,10 @@
 
 | 項目 | 詳細 |
 |-----|---|
-| **状況** | 🔄 準備中 |
-| **投稿予定** | 2026年5月最終週 |
+| **状況** | 🔄 査読中 |
 | **ジャーナル** | *Computers and Electronics in Agriculture*（Elsevier） |
-| **著者** | Al Zobaer、峯野裕 |
-| **内容** | 時系列温室植物フェノタイピングのためのスケール不変3D Gaussian Splatting |
+| **著者** | Al Zobaer、Makoto Koike、Yuichiro Nomura、峯野裕 |
+| **内容** | 時系列温室植物**モニタリング**のためのスケール不変3D Gaussian Splatting |
 
 ---
 
