@@ -2483,14 +2483,14 @@
 <div class="admonition success">
 <p class="admonition-title">性能指標</p>
 <ul>
-<li><strong>PSNR：</strong> 23.84 ± 0.83 dB（再構成品質）</li>
-<li><strong>時間的安定性：</strong> CV = 3.5%（非常に高い一貫性）</li>
-<li><strong>草丈抽出：</strong> CV = 9.7%（スケール不変手法）</li>
-<li><strong>改善率：</strong> PLY手法比 44.7ポイント向上</li>
+<li><strong>PSNR：</strong> 23.71 dB（条件1、5 fps）· 22セッション平均 23.84 dB</li>
+<li><strong>時間的安定性：</strong> PSNR CV = 3.5%（非常に高い一貫性）</li>
+<li><strong>草丈抽出：</strong> h_norm CV = 9.8%（スケール不変手法）</li>
+<li><strong>改善率：</strong> PLY直接法比 2.86倍安定（28.0% → 9.8% CV）</li>
 </ul>
 </div>
 <p><img alt="結果サマリー" src="assets/images/figures/results-summary.png" />
-<em>50日間にわたる22日分のデータで検証済み</em></p>
+<em>49日間にわたる22日分のデータで検証済み</em></p>
 <hr />
 <h2 id="_8">ドキュメント構成<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
 <h3 id="_9">初心者向け<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
@@ -2527,7 +2527,7 @@
 </div>
 <div class="tabbed-block">
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 既存のモデルから形質を抽出</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>python<span class="w"> </span>scripts/extract_traits.py<span class="w"> </span>--date<span class="w"> </span><span class="m">20260119</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>python<span class="w"> </span>analysis/compute_heights_rendered.py<span class="w"> </span>--dates<span class="w"> </span><span class="m">20260119</span>
 </span></code></pre></div>
 </div>
 </div>
@@ -2544,7 +2544,7 @@
 </ol>
 <p><strong>それでも解決しない場合：</strong></p>
 <p>お問い合わせ先：静岡大学 峯野研究室<br />
-メール：al.zobaer.24@shizuoka.ac.jp</p>
+メール：zobaer.al.24@shizuoka.ac.jp</p>
 </div>
 <hr />
 <h2 id="_14">謝辞<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
@@ -2631,7 +2631,7 @@
     
     
     
-    <a href="mailto:al.zobaer.24@shizuoka.ac.jp" target="_blank" rel="noopener" title="" class="md-social__link">
+    <a href="mailto:zobaer.al.24@shizuoka.ac.jp" target="_blank" rel="noopener" title="" class="md-social__link">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l208 156a48 48 0 0 0 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 196v188c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V196L313.6 344.8c-34.1 25.6-81.1 25.6-115.2 0z"/></svg>
     </a>
   

@@ -1375,7 +1375,7 @@
   <a href="#step-1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1：植物セグメンテーション
+        Step 1：正準視点のレンダリング
       
     </span>
   </a>
@@ -1383,10 +1383,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2" class="md-nav__link">
+  <a href="#step-2hsv" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2：スケール不変草丈の抽出
+        Step 2：植物セグメンテーション（HSV閾値処理）
       
     </span>
   </a>
@@ -1397,7 +1397,7 @@
   <a href="#step-3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3：実行
+        Step 3：スケール不変草丈の抽出
       
     </span>
   </a>
@@ -1405,10 +1405,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4" class="md-nav__link">
+  <a href="#step-422" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4：時系列成長解析
+        Step 4：全22セッションで実行
       
     </span>
   </a>
@@ -1424,16 +1424,22 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#csv" class="md-nav__link">
+    <nav class="md-nav" aria-label="結果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cv" class="md-nav__link">
     <span class="md-ellipsis">
       
-        出力CSVフォーマット
+        草丈CV比較
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2152,7 +2158,7 @@
   <a href="#step-1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1：植物セグメンテーション
+        Step 1：正準視点のレンダリング
       
     </span>
   </a>
@@ -2160,10 +2166,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2" class="md-nav__link">
+  <a href="#step-2hsv" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2：スケール不変草丈の抽出
+        Step 2：植物セグメンテーション（HSV閾値処理）
       
     </span>
   </a>
@@ -2174,7 +2180,7 @@
   <a href="#step-3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3：実行
+        Step 3：スケール不変草丈の抽出
       
     </span>
   </a>
@@ -2182,10 +2188,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4" class="md-nav__link">
+  <a href="#step-422" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4：時系列成長解析
+        Step 4：全22セッションで実行
       
     </span>
   </a>
@@ -2201,16 +2207,22 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#csv" class="md-nav__link">
+    <nav class="md-nav" aria-label="結果">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cv" class="md-nav__link">
     <span class="md-ellipsis">
       
-        出力CSVフォーマット
+        草丈CV比較
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2246,149 +2258,153 @@
 
 
 <h1 id="stage-5">Stage 5：形質抽出<a class="headerlink" href="#stage-5" title="Permanent link">&para;</a></h1>
-<p>レンダリング画像からスケール不変な植物計測値を抽出します。</p>
+<p>正準3DGSレンダリング画像からスケール不変な植物計測値を抽出します。</p>
 <hr />
 <h2 id="_1">このステージの概要<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph LR
-    A[📷 レンダリング画像&lt;br/&gt;正規化視点] --&gt;|セグメンテーション| B[🌿 植物マスク]
-    B --&gt;|草丈計算| C[📏 画像空間草丈]
-    C --&gt; D[📊 植物形質&lt;br/&gt;草丈 · キャノピー]
+    A[🎥 3DGSモデル&lt;br/&gt;各セッション] --&gt;|ポーズ025レンダリング| B[📷 正準画像&lt;br/&gt;1600×899 px]
+    B --&gt;|HSV閾値処理| C[🌿 植物マスク]
+    C --&gt;|第5〜95パーセンタイル| D[📊 h_norm · a_norm]
     style A fill:#e1f5ff
     style D fill:#e1ffe1</code></pre>
-<p><strong>推定所要時間：</strong> 1日付あたり約2分</p>
+<p><strong>推定所要時間：</strong> 1セッションあたり約3分（GPUレンダリング＋解析）</p>
 <hr />
 <h2 id="_2">核心となる革新<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>従来のPLYベースの手法は三次元座標空間で計測しますが、COLMAPは各日付の再構成に**異なるスケール**を割り当てるため日付間の直接比較ができません。</p>
-<p>本手法の解決策：<strong>レンダリング画像空間</strong>（ピクセル）で草丈を計測します。撮影日に関わらず植物が画像内で一定の正規化された位置を占めるため、スケール不変になります。</p>
+<p>本手法の解決策：3DGSレンダラーでCOLMAPカメラポーズ025（5 fpsで撮影開始から約5.2秒）から**正準新視点画像**を合成し、画素空間で草丈を計測します。比率によりCOLMAPスケール係数が相殺されます。</p>
 <hr />
-<h2 id="step-1">Step 1：植物セグメンテーション<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h2>
-<p>HSVカラー閾値処理で植物を背景から分離します。</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">cv2</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">def</span> <span class="nf">segment_plant</span><span class="p">(</span><span class="n">image_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="c1"># HSVカラー閾値処理で植物を背景から分離</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="c1"># 255=植物ピクセルのバイナリマスクを返す</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image_path</span><span class="p">)</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">hsv</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2HSV</span><span class="p">)</span>
+<h2 id="step-1">Step 1：正準視点のレンダリング<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h2>
+<p>全22セッションで同一の物理視点となる**カメラポーズ025**から植物をレンダリングします。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">json</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="o">,</span> <span class="nn">torch</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;/path/to/gaussian-splatting&#39;</span><span class="p">)</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span> <span class="nn">gaussian_renderer</span> <span class="kn">import</span> <span class="n">render</span><span class="p">,</span> <span class="n">GaussianModel</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span> <span class="nn">utils.graphics_utils</span> <span class="kn">import</span> <span class="n">getWorld2View2</span><span class="p">,</span> <span class="n">getProjectionMatrix</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># ネイティブ解像度でカメラポーズ025を読み込み</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;output/YYYYMMDD/gs_model/cameras.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">cam</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)[</span><span class="mi">25</span><span class="p">]</span>   <span class="c1"># 0インデックス：index 25 = COLMAPポーズ025</span>
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="c1"># 緑色植生の閾値（トマト植物用に調整済み）</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="n">lower_green</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">upper_green</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">90</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">])</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">mask</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">inRange</span><span class="p">(</span><span class="n">hsv</span><span class="p">,</span> <span class="n">lower_green</span><span class="p">,</span> <span class="n">upper_green</span><span class="p">)</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="c1"># マスクのクリーンアップ</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="n">kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="n">mask</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_CLOSE</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="n">mask</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">MORPH_OPEN</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    <span class="k">return</span> <span class="n">mask</span>
-</span></code></pre></div>
-<hr />
-<h2 id="step-2">Step 2：スケール不変草丈の抽出<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h2>
-<p>草丈を画像高さの**比率**として計測します — これがスケール不変性の鍵です。</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span> <span class="nf">extract_height_pixels</span><span class="p">(</span><span class="n">mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="c1"># 画像空間座標で植物草丈を抽出</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="c1"># 草丈を画像高さの割合（0.0〜1.0）として返す</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">plant_rows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">plant_rows</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;height_px&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;height_ratio&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;valid&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="n">top_px</span>    <span class="o">=</span> <span class="n">plant_rows</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="n">bottom_px</span> <span class="o">=</span> <span class="n">plant_rows</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="n">height_px</span> <span class="o">=</span> <span class="n">bottom_px</span> <span class="o">-</span> <span class="n">top_px</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="c1"># 画像高さで正規化 → スケール不変</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    <span class="n">height_ratio</span> <span class="o">=</span> <span class="n">height_px</span> <span class="o">/</span> <span class="n">mask</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    <span class="k">return</span> <span class="p">{</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>        <span class="s2">&quot;height_px&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">height_px</span><span class="p">),</span>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>        <span class="s2">&quot;height_ratio&quot;</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="n">height_ratio</span><span class="p">),</span>
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>        <span class="s2">&quot;valid&quot;</span><span class="p">:</span> <span class="kc">True</span>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>    <span class="p">}</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">W</span><span class="p">,</span> <span class="n">H</span> <span class="o">=</span> <span class="n">cam</span><span class="p">[</span><span class="s1">&#39;width&#39;</span><span class="p">],</span> <span class="n">cam</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cam</span><span class="p">[</span><span class="s1">&#39;rotation&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cam</span><span class="p">[</span><span class="s1">&#39;position&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">T</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">R</span> <span class="o">@</span> <span class="n">C</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">FoVx</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">W</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">cam</span><span class="p">[</span><span class="s1">&#39;fx&#39;</span><span class="p">]))</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">FoVy</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">H</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">cam</span><span class="p">[</span><span class="s1">&#39;fy&#39;</span><span class="p">]))</span>
 </span></code></pre></div>
 <div class="admonition info">
-<p class="admonition-title">なぜ画像高さで割るか？</p>
-<p><code>height_ratio = height_px / image_height</code> により、COLMAPの任意スケール係数から独立した計測値になります。</p>
+<p class="admonition-title">なぜポーズ025？</p>
+<p>カメラポーズ025はCOLMAPが推定した26番目のポーズ（0インデックス）です。5 fpsでframe_00026に対応し、撮影開始から約5.2秒 — 全セッションで幾何学的に同一の正面垂直視点です。</p>
 </div>
 <hr />
-<h2 id="step-3">Step 3：実行<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>conda<span class="w"> </span>activate<span class="w"> </span>3dgs
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>python<span class="w"> </span>extract_traits.py<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span>--renders_dir<span class="w"> </span>output/train/ours_30000/renders<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span>--date<span class="w"> </span><span class="m">20260119</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span>--output<span class="w"> </span>results/traits_20260119.csv
+<h2 id="step-2hsv">Step 2：植物セグメンテーション（HSV閾値処理）<a class="headerlink" href="#step-2hsv" title="Permanent link">&para;</a></h2>
+<p>HSVカラー閾値処理で植物を背景から分離します。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span> <span class="nn">cv2</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">def</span> <span class="nf">segment_plant</span><span class="p">(</span><span class="n">img_rgb</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="sd">    緑色植生をセグメント。255=植物のバイナリマスクを返す。</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="sd">    HSV閾値（OpenCV規約、8ビット）：</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="sd">      色相 : [25, 95]   （度/2）</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="sd">      彩度 : &gt;= 20</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="sd">      明度 : &gt;= 30</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="n">img_bgr</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img_rgb</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_RGB2BGR</span><span class="p">)</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    <span class="n">hsv</span>     <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img_bgr</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2HSV</span><span class="p">)</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    <span class="n">mask</span>    <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">inRange</span><span class="p">(</span><span class="n">hsv</span><span class="p">,</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>                          <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span>  <span class="mi">20</span><span class="p">,</span>  <span class="mi">30</span><span class="p">]),</span>   <span class="c1"># 下限</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>                          <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">95</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">]))</span>   <span class="c1"># 上限</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>    <span class="k">return</span> <span class="n">mask</span>
 </span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">閾値の値が重要</p>
+<p>上記の閾値は論文（§3.3）と完全に一致します。このマニュアルの旧バージョンでは異なる値（[25,40,40]〜[90,255,255]）が示されていましたが、それは誤りです。上記の値を使用してください。</p>
+</div>
 <hr />
-<h2 id="step-4">Step 4：時系列成長解析<a class="headerlink" href="#step-4" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 全日付で実行</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">for</span><span class="w"> </span>DATE<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">20260101</span><span class="w"> </span><span class="m">20260108</span><span class="w"> </span><span class="m">20260115</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span>python<span class="w"> </span>extract_traits.py<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">        </span>--renders_dir<span class="w"> </span>data/<span class="nv">$DATE</span>/output/train/ours_30000/renders<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span>--date<span class="w"> </span><span class="nv">$DATE</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span>--output<span class="w"> </span>results/traits_<span class="nv">$DATE</span>.csv
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">done</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="c1"># 全日付を統合</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="s2">import pandas as pd, glob</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="s2">dfs = [pd.read_csv(f) for f in sorted(glob.glob(&#39;results/traits_*.csv&#39;))]</span>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="s2">pd.concat(dfs).to_csv(&#39;results/all_traits.csv&#39;, index=False)</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="s2">&quot;</span>
+<h2 id="step-3">Step 3：スケール不変草丈の抽出<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h2>
+<p>第5〜第95パーセンタイル行を使用して草丈を画像高さの**比率**として計測します。</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">def</span> <span class="nf">extract_traits</span><span class="p">(</span><span class="n">mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="sd">    h_norm  = (r95 - r5) / H_R    （第5〜95パーセンタイル行スパン）</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="sd">    a_norm  = 緑ピクセル数 / (H_R * W_R)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="sd">    どちらも [0, 1] の範囲でスケール不変。</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="sd">    &quot;&quot;&quot;</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">H</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="n">mask</span><span class="o">.</span><span class="n">shape</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">plant_rows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">plant_rows</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;h_norm&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;a_norm&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s2">&quot;valid&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="n">r5</span>  <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">plant_rows</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="n">r95</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">plant_rows</span><span class="p">,</span> <span class="mi">95</span><span class="p">))</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    <span class="n">h_norm</span> <span class="o">=</span> <span class="p">(</span><span class="n">r95</span> <span class="o">-</span> <span class="n">r5</span><span class="p">)</span> <span class="o">/</span> <span class="n">H</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    <span class="n">a_norm</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="o">/</span> <span class="mf">255.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">H</span> <span class="o">*</span> <span class="n">W</span><span class="p">)</span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>    <span class="k">return</span> <span class="p">{</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>        <span class="s2">&quot;h_norm&quot;</span><span class="p">:</span>     <span class="nb">round</span><span class="p">(</span><span class="n">h_norm</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>        <span class="s2">&quot;a_norm&quot;</span><span class="p">:</span>     <span class="nb">round</span><span class="p">(</span><span class="n">a_norm</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>        <span class="s2">&quot;height_px&quot;</span><span class="p">:</span>  <span class="nb">round</span><span class="p">(</span><span class="n">r95</span> <span class="o">-</span> <span class="n">r5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>        <span class="s2">&quot;top_row_px&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">r5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>        <span class="s2">&quot;bot_row_px&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">r95</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>        <span class="s2">&quot;valid&quot;</span><span class="p">:</span>      <span class="kc">True</span><span class="p">,</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>    <span class="p">}</span>
+</span></code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">なぜ最小/最大行でなく第5〜95パーセンタイルか？</p>
+<p>最小/最大行は孤立した緑ピクセル（迷い葉、反射など）に影響されます。第5〜95パーセンタイルは外れ値を無視しながら植物の垂直範囲を頑健に推定します。</p>
+</div>
+<hr />
+<h2 id="step-422">Step 4：全22セッションで実行<a class="headerlink" href="#step-422" title="Permanent link">&para;</a></h2>
+<p>完全な再現性スクリプトは <code>analysis/compute_heights_rendered.py</code> です。全セッションをループし、ポーズ025からレンダリングして <code>analysis/heights_rendered.csv</code> に書き込みます。</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>conda<span class="w"> </span>activate<span class="w"> </span>gaussian_splatting
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>python<span class="w"> </span>analysis/compute_heights_rendered.py
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># オプション：一部のセッションのみ処理</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>python<span class="w"> </span>analysis/compute_heights_rendered.py<span class="w"> </span>--dates<span class="w"> </span><span class="m">20260119</span><span class="w"> </span><span class="m">20260123</span>
 </span></code></pre></div>
 <hr />
 <h2 id="_3">結果<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="cv">草丈CV比較<a class="headerlink" href="#cv" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
 <th>手法</th>
 <th>CV</th>
-<th>解釈</th>
+<th>比較</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>本手法（画像空間）</strong></td>
-<td><strong>9.7%</strong></td>
-<td>✅ 生物学的に意味のある変動</td>
+<td><strong>提案手法（レンダー空間 h_norm）</strong></td>
+<td><strong>9.8%</strong></td>
+<td>—</td>
 </tr>
 <tr>
-<td>従来手法（PLY）</td>
-<td>54.4%</td>
-<td>❌ スケールアーティファクトが支配的</td>
+<td>PLY直接草丈</td>
+<td>28.0%</td>
+<td>2.86倍悪化</td>
+</tr>
+<tr>
+<td>スケール補正PLY</td>
+<td>35.1%</td>
+<td>3.58倍悪化</td>
+</tr>
+<tr>
+<td>生フレームベースライン</td>
+<td>0.0%</td>
+<td><em>(自明 — 毎セッション同一画像)</em></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition success">
-<p class="admonition-title">CV 9.7%の意味</p>
-<p>計測された変動は実際の生物学的変動を反映しており、計測誤差ではありません。複数日の3DGS再構成からのスケール不変形質抽出の**初の検証**です。</p>
+<p class="admonition-title">CV 9.8%の意味</p>
+<p>レンダー空間h_normは22セッション間で9.8%変動します。3回の剪定イベントがそれぞれ15〜27パーセンタイルポイントの低下を引き起こし、背景変動を大きく上回ることから、本手法が計測ノイズではなく実際の生物学的変化を検出できることが確認されました。</p>
 </div>
 <hr />
-<h2 id="csv">出力CSVフォーマット<a class="headerlink" href="#csv" title="Permanent link">&para;</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>date,image,height_px,height_ratio,top_px,bottom_px,valid
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>20260119,frame_0001.jpg,1124,0.521,412,1536,True
-</span></code></pre></div>
-<table>
-<thead>
-<tr>
-<th>列</th>
-<th>説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>height_ratio</code></td>
-<td><strong>主要指標</strong> — 草丈 / 画像高さ（スケール不変）</td>
-</tr>
-<tr>
-<td><code>valid</code></td>
-<td>セグメンテーション成功フラグ</td>
-</tr>
-</tbody>
-</table>
-<hr />
 <h2 id="_4">次のステップ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p><a class="md-button md-button--primary" href="../../my-research/contributions/">→ 研究内容：独自の貢献</a></p>
+<p><a class="md-button md-button--primary" href="../../my-research/contributions/">→ 研究内容：独自の貢献</a>
+<a class="md-button" href="../../my-research/results/">→ 結果・検証</a></p>
 
 
 
@@ -2455,7 +2471,7 @@
     
     
     
-    <a href="mailto:al.zobaer.24@shizuoka.ac.jp" target="_blank" rel="noopener" title="" class="md-social__link">
+    <a href="mailto:zobaer.al.24@shizuoka.ac.jp" target="_blank" rel="noopener" title="" class="md-social__link">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l208 156a48 48 0 0 0 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 196v188c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V196L313.6 344.8c-34.1 25.6-81.1 25.6-115.2 0z"/></svg>
     </a>
   

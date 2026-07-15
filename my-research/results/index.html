@@ -1841,10 +1841,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#quality-metrics" class="md-nav__link">
+  <a href="#reconstruction-quality-metrics-condition-1-5-fps-jan-19" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quality Metrics
+        Reconstruction Quality Metrics (Condition 1, 5 fps, Jan 19)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plant-trait-measurement-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plant Trait Measurement Results
       
     </span>
   </a>
@@ -2072,10 +2083,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#quality-metrics" class="md-nav__link">
+  <a href="#reconstruction-quality-metrics-condition-1-5-fps-jan-19" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Quality Metrics
+        Reconstruction Quality Metrics (Condition 1, 5 fps, Jan 19)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plant-trait-measurement-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plant Trait Measurement Results
       
     </span>
   </a>
@@ -2136,8 +2158,8 @@
 
 
 <h1 id="results-validation">Results &amp; Validation<a class="headerlink" href="#results-validation" title="Permanent link">&para;</a></h1>
-<p>Research results and validation.</p>
-<h2 id="quality-metrics">Quality Metrics<a class="headerlink" href="#quality-metrics" title="Permanent link">&para;</a></h2>
+<p>Research results and validation. All values match the submitted manuscript (Computers and Electronics in Agriculture).</p>
+<h2 id="reconstruction-quality-metrics-condition-1-5-fps-jan-19">Reconstruction Quality Metrics (Condition 1, 5 fps, Jan 19)<a class="headerlink" href="#reconstruction-quality-metrics-condition-1-5-fps-jan-19" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2149,23 +2171,59 @@
 <tbody>
 <tr>
 <td><strong>PSNR</strong></td>
-<td>23.80 dB</td>
+<td>23.71 dB</td>
 <td>Good (&gt;20 dB acceptable)</td>
 </tr>
 <tr>
 <td><strong>SSIM</strong></td>
-<td>0.779</td>
+<td>0.773</td>
 <td>Good (1.0 = perfect)</td>
 </tr>
 <tr>
 <td><strong>LPIPS</strong></td>
-<td>0.216</td>
+<td>0.222</td>
 <td>Good (0.0 = perfect)</td>
 </tr>
 <tr>
-<td><strong>CV (temporal)</strong></td>
+<td><strong>PSNR temporal CV</strong></td>
 <td>3.5%</td>
-<td>Excellent consistency</td>
+<td>Excellent consistency across 22 sessions</td>
+</tr>
+<tr>
+<td><strong>Mean PSNR (22 sessions)</strong></td>
+<td>23.84 dB</td>
+<td>All sessions exceed 22.5 dB</td>
+</tr>
+</tbody>
+</table>
+<h2 id="plant-trait-measurement-results">Plant Trait Measurement Results<a class="headerlink" href="#plant-trait-measurement-results" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Proposed (render-space)</th>
+<th>Baseline (direct PLY)</th>
+<th>Improvement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>h_norm CV</strong></td>
+<td><strong>9.8%</strong></td>
+<td>28.0%</td>
+<td><strong>2.86× more stable</strong></td>
+</tr>
+<tr>
+<td><strong>a_norm CV</strong></td>
+<td>16.7%</td>
+<td>22.6% (PLY spread)</td>
+<td>More stable</td>
+</tr>
+<tr>
+<td>Scale-calibrated PLY CV</td>
+<td>—</td>
+<td>35.1%</td>
+<td>Worse than direct PLY</td>
 </tr>
 </tbody>
 </table>
@@ -2173,20 +2231,47 @@
 <video controls width="100%" style="border-radius:8px; margin-bottom:1rem;">
   <source src="../../assets/videos/results/timelapse-growth.mp4" type="video/mp4">
 </video>
-<p><em>3DGS-rendered plant growth across all 22 acquisition dates (Jan 19 – Mar 9, 2026). Each frame shows the height measured from the point cloud.</em></p>
+<p><em>3DGS-rendered plant growth across all 22 acquisition dates (Jan 19 – Mar 9, 2026). Each frame shows the height measured from the rendered canonical image.</em></p>
 <hr />
 <h2 id="validation-results">Validation Results<a class="headerlink" href="#validation-results" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Dates:</strong> 22 capture dates</li>
-<li><strong>Duration:</strong> 50 days (Jan 19 - Mar 9, 2026)</li>
+<li><strong>Duration:</strong> 49 days (Jan 19 – Mar 9, 2026)</li>
 <li><strong>Success Rate:</strong> 100% (22/22)</li>
 <li><strong>Computing:</strong> DNN19, RTX 6000 Ada</li>
 </ul>
 <h2 id="key-finding">Key Finding<a class="headerlink" href="#key-finding" title="Permanent link">&para;</a></h2>
-<p>Fixed viewpoint (Condition 1) outperforms:
-- Multi-video merged (v1): 17.30 dB
-- Motion videos (v3): 19-20 dB
-- LongSplat: 15.92 dB</p>
+<p>Fixed viewpoint (Condition 1, 5 fps) outperforms all other acquisition conditions:</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>PSNR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cond. 1 — Fixed end-a, lower viewpoint</strong></td>
+<td><strong>23.71 dB</strong></td>
+</tr>
+<tr>
+<td>Cond. 5 — One-way a→d, tier 1</td>
+<td>21.42 dB</td>
+</tr>
+<tr>
+<td>Cond. 2 — Fixed end-b, lower viewpoint</td>
+<td>20.11 dB</td>
+</tr>
+<tr>
+<td>Cond. 3 — Round-trip, tier 1</td>
+<td>19.37 dB</td>
+</tr>
+<tr>
+<td>Merged (all 6 combined)</td>
+<td>18.60 dB</td>
+</tr>
+</tbody>
+</table>
 <p><strong>Lesson:</strong> Acquisition consistency &gt; method sophistication</p>
 
 
@@ -2254,7 +2339,7 @@
     
     
     
-    <a href="mailto:al.zobaer.24@shizuoka.ac.jp" target="_blank" rel="noopener" title="" class="md-social__link">
+    <a href="mailto:zobaer.al.24@shizuoka.ac.jp" target="_blank" rel="noopener" title="" class="md-social__link">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l208 156a48 48 0 0 0 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 196v188c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V196L313.6 344.8c-34.1 25.6-81.1 25.6-115.2 0z"/></svg>
     </a>
   

@@ -2342,7 +2342,7 @@
 <pre class="mermaid"><code>graph LR
     A[🗺️ Sparse Model&lt;br/&gt;cameras + points3D] --&gt;|Initialize| B[✨ Gaussian Splats&lt;br/&gt;Initial cloud]
     B --&gt;|30,000 iterations| C[🌱 Dense Model&lt;br/&gt;point_cloud.ply]
-    C --&gt;|Evaluate| D[📊 PSNR ~23.80 dB]
+    C --&gt;|Evaluate| D[📊 PSNR ~23.71 dB]
     style A fill:#e1f5ff
     style C fill:#e1ffe1
     style D fill:#fff3e0</code></pre>
@@ -2396,7 +2396,7 @@
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>[24000/30000] L1 loss=0.0183 | PSNR=23.42 | Gaussians=1,234,567
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>[24100/30000] L1 loss=0.0181 | PSNR=23.55 | Gaussians=1,241,023
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>...
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>[30000/30000] L1 loss=0.0175 | PSNR=23.80 | Gaussians=1,287,441
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>[30000/30000] L1 loss=0.0175 | PSNR=23.71 | Gaussians=1,287,441
 </span></code></pre></div>
 <table>
 <thead>
@@ -2507,15 +2507,15 @@
 <ul>
 <li>✅ <code>point_cloud.ply</code> exists in <code>output/point_cloud/iteration_30000/</code></li>
 <li>✅ File size: 100–400 MB</li>
-<li>✅ Final PSNR ≥ 22 dB (our dataset achieves 23.80 dB)</li>
+<li>✅ Final PSNR ≥ 22 dB (our dataset achieves 23.71 dB)</li>
 <li>✅ No CUDA OOM errors during training</li>
 </ul>
 </div>
 <hr />
 <h2 id="our-training-results">Our Training Results<a class="headerlink" href="#our-training-results" title="Permanent link">&para;</a></h2>
-<p>Across our 22-date, 50-day validation dataset:</p>
+<p>Across our 22-date, 49-day validation dataset:</p>
 <p><img alt="PSNR over time showing consistent reconstruction quality across all 22 dates" src="../../assets/images/figures/psnr_over_time_v2.png" width="100%" />
-<em>PSNR across all 22 capture dates — mean 23.80 dB, CV = 3.5% (excellent temporal consistency)</em></p>
+<em>PSNR across all 22 capture dates — mean 23.71 dB, CV = 3.5% (excellent temporal consistency)</em></p>
 <table>
 <thead>
 <tr>
@@ -2526,7 +2526,7 @@
 <tbody>
 <tr>
 <td>Mean PSNR</td>
-<td>23.80 dB</td>
+<td>23.71 dB</td>
 </tr>
 <tr>
 <td>Std deviation</td>
@@ -2643,7 +2643,7 @@
     
     
     
-    <a href="mailto:al.zobaer.24@shizuoka.ac.jp" target="_blank" rel="noopener" title="" class="md-social__link">
+    <a href="mailto:zobaer.al.24@shizuoka.ac.jp" target="_blank" rel="noopener" title="" class="md-social__link">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l208 156a48 48 0 0 0 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 196v188c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V196L313.6 344.8c-34.1 25.6-81.1 25.6-115.2 0z"/></svg>
     </a>
   

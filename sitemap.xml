@@ -2,504 +2,504 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/about/changelog/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/about/changelog/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/about/changelog/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/about/license/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/about/license/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/about/license/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/assets/images/screenshots/CAPTURE-GUIDE/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/assets/images/screenshots/CAPTURE-GUIDE/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/assets/images/screenshots/CAPTURE-GUIDE/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/data-prep/dataset/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/data-prep/dataset/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/data-prep/dataset/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/data-prep/directory-structure/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/data-prep/directory-structure/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/data-prep/directory-structure/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/data-prep/file-naming/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/data-prep/file-naming/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/data-prep/file-naming/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/data-prep/frame-extraction/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/data-prep/frame-extraction/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/data-prep/frame-extraction/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/data-prep/video-requirements/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/data-prep/video-requirements/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/data-prep/video-requirements/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/environment/3dgs/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/environment/3dgs/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/environment/3dgs/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/environment/colmap/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/environment/colmap/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/environment/colmap/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/environment/cuda/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/environment/cuda/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/environment/cuda/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/environment/intro/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/environment/intro/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/environment/intro/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/environment/python/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/environment/python/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/environment/python/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/environment/verify/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/environment/verify/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/environment/verify/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/getting-started/overview/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/getting-started/overview/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/getting-started/overview/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/getting-started/quick-start/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/getting-started/quick-start/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/getting-started/quick-start/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/getting-started/requirements/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/getting-started/requirements/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/getting-started/requirements/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/my-research/contributions/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/my-research/contributions/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/my-research/contributions/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/my-research/overview/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/my-research/overview/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/my-research/overview/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/my-research/publications/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/my-research/publications/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/my-research/publications/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/my-research/results/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/my-research/results/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/my-research/results/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/parameters/3dgs/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/parameters/3dgs/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/parameters/3dgs/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/parameters/colmap/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/parameters/colmap/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/parameters/colmap/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/parameters/recommended/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/parameters/recommended/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/parameters/recommended/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/parameters/video/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/parameters/video/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/parameters/video/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/pipeline/3dgs-training/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/pipeline/3dgs-training/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/pipeline/3dgs-training/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/pipeline/colmap-sfm/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/pipeline/colmap-sfm/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/pipeline/colmap-sfm/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/pipeline/overview/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/pipeline/overview/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/pipeline/overview/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/pipeline/rendering/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/pipeline/rendering/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/pipeline/rendering/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/pipeline/trait-extraction/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/pipeline/trait-extraction/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/pipeline/trait-extraction/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/pipeline/video-processing/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/pipeline/video-processing/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/pipeline/video-processing/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/troubleshooting/3dgs-errors/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/troubleshooting/3dgs-errors/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/troubleshooting/3dgs-errors/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/troubleshooting/colmap-errors/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/troubleshooting/colmap-errors/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/troubleshooting/colmap-errors/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/troubleshooting/common-issues/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/troubleshooting/common-issues/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/troubleshooting/common-issues/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/troubleshooting/gpu-memory/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/troubleshooting/gpu-memory/"/>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/troubleshooting/gpu-memory/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/about/changelog/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/about/changelog/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/about/changelog/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/about/license/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/about/license/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/about/license/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/assets/images/screenshots/CAPTURE-GUIDE/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/assets/images/screenshots/CAPTURE-GUIDE/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/assets/images/screenshots/CAPTURE-GUIDE/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/data-prep/dataset/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/data-prep/dataset/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/data-prep/dataset/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/data-prep/directory-structure/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/data-prep/directory-structure/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/data-prep/directory-structure/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/data-prep/file-naming/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/data-prep/file-naming/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/data-prep/file-naming/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/data-prep/frame-extraction/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/data-prep/frame-extraction/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/data-prep/frame-extraction/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/data-prep/video-requirements/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/data-prep/video-requirements/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/data-prep/video-requirements/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/environment/3dgs/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/environment/3dgs/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/environment/3dgs/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/environment/colmap/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/environment/colmap/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/environment/colmap/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/environment/cuda/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/environment/cuda/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/environment/cuda/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/environment/intro/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/environment/intro/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/environment/intro/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/environment/python/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/environment/python/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/environment/python/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/environment/verify/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/environment/verify/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/environment/verify/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/getting-started/overview/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/getting-started/overview/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/getting-started/overview/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/getting-started/quick-start/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/getting-started/quick-start/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/getting-started/quick-start/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/getting-started/requirements/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/getting-started/requirements/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/getting-started/requirements/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/my-research/contributions/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/my-research/contributions/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/my-research/contributions/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/my-research/overview/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/my-research/overview/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/my-research/overview/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/my-research/publications/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/my-research/publications/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/my-research/publications/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/my-research/results/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/my-research/results/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/my-research/results/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/parameters/3dgs/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/parameters/3dgs/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/parameters/3dgs/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/parameters/colmap/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/parameters/colmap/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/parameters/colmap/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/parameters/recommended/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/parameters/recommended/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/parameters/recommended/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/parameters/video/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/parameters/video/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/parameters/video/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/pipeline/3dgs-training/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/pipeline/3dgs-training/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/pipeline/3dgs-training/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/pipeline/colmap-sfm/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/pipeline/colmap-sfm/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/pipeline/colmap-sfm/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/pipeline/overview/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/pipeline/overview/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/pipeline/overview/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/pipeline/rendering/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/pipeline/rendering/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/pipeline/rendering/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/pipeline/trait-extraction/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/pipeline/trait-extraction/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/pipeline/trait-extraction/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/pipeline/video-processing/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/pipeline/video-processing/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/pipeline/video-processing/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/troubleshooting/3dgs-errors/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/troubleshooting/3dgs-errors/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/troubleshooting/3dgs-errors/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/troubleshooting/colmap-errors/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/troubleshooting/colmap-errors/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/troubleshooting/colmap-errors/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/troubleshooting/common-issues/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/troubleshooting/common-issues/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/troubleshooting/common-issues/"/>
     </url>
     <url>
         <loc>https://alzobaer.github.io/3dgs-pipeline-manual/ja/troubleshooting/gpu-memory/</loc>
-        <lastmod>2026-04-30</lastmod>
+        <lastmod>2026-07-15</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="ja" href="https://alzobaer.github.io/3dgs-pipeline-manual/ja/troubleshooting/gpu-memory/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://alzobaer.github.io/3dgs-pipeline-manual/troubleshooting/gpu-memory/"/>
