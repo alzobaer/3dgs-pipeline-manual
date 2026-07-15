@@ -177,7 +177,7 @@ graph LR
     **それでも解決しない場合：**
     
     お問い合わせ先：静岡大学 峯野研究室  
-    メール：al.zobaer.24@shizuoka.ac.jp
+    メール：zobaer.al.24@shizuoka.ac.jp
 
 ---
 

@@ -55,4 +55,4 @@
 
 **Zobaer Al**  
 峯野研究室 · 静岡大学  
-メール：al.zobaer.24@shizuoka.ac.jp
+メール：zobaer.al.24@shizuoka.ac.jp
